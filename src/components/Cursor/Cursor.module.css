@@ -1,0 +1,30 @@
+.cursor {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference; /* 배경과 반전 효과 */
+  /* transition: width 0.2s ease, height 0.2s ease, transform 0.1s ease-out; */
+}
+
+.cursor {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+}
+
+/* 버튼, 링크 호버 시 커서 커지게 변경 */
+.cursor.hovered {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.5);
+}

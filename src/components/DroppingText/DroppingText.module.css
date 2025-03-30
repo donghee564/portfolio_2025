@@ -1,0 +1,27 @@
+.dropping_text_container {
+  width: 100%;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  position: relative;
+  min-height: 98px;
+  display: flex;
+  align-items: center;
+}
+
+.dropping_text_char {
+  display: inline-block;
+  font-size: 78px;
+  font-weight: 800;
+  letter-spacing: -5px;
+  line-height: 98px;
+
+  /* &:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (forced-colors: active) {
+    border: 1px solid currentColor;
+  } */
+}

@@ -1,0 +1,203 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 폰트 로딩 전략 개선 */
+@font-face {
+  font-family: "Pretendard Variable";
+  src: url("/fonts/PretendardVariable.woff2") format("woff2-variations");
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: block; /* swap 대신 block 사용 */
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 16px;
+  opacity: 0; /* 초기에는 숨김 */
+  animation: fadeIn 0.1s ease-in forwards; /* 폰트 로드 후 표시 */
+}
+
+/* 폰트 로드 후 페이드인 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 리스트 스타일 제거 */
+ol,
+ul {
+  list-style: none;
+}
+
+/* 링크 스타일 초기화 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 버튼 스타일 초기화 */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* 테이블 스타일 초기화 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 이미지 최대 너비 설정 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 접근성 개선 */
+:focus {
+  outline: none;
+}
+
+/* 스크린리더용 숨김 클래스 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* 전역 css */
+.app-container {
+  min-height: 100vh;
+  /* mix-blend-mode: difference; */
+}
+
+.app-container[data-theme="light"] {
+  background-color: #fff;
+  color: #000;
+}
+
+.app-container[data-theme="dark"] {
+  background-color: #111;
+  color: #fff;
+}
+
+.scroll-container {
+  width: 100%;
+  /* height: 400vh; */
+  overflow: hidden;
+}
+
+/* 섹션 css */
+.section-container {
+  width: 100%;
+  height: 100dvh;
+}
+.section-content-wrapper {
+  padding: 15% 0 0 12%;
+}
+.section-title-text {
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 3rem;
+  letter-spacing: -0.3rem;
+}
+.section-title {
+  font-size: 14rem;
+  font-weight: 800;
+  line-height: 13rem;
+}
+.appostrophe {
+  font-size: 10rem;
+  font-weight: inherit;
+  line-height: inherit;
+}
+.section-content {
+  margin-top: 7.2rem;
+}
+.section-text {
+  font-size: 2.2rem;
+  line-height: 3rem;
+  letter-spacing: -0.05rem;
+}
+.section-title .type-text-border {
+  font-size: 14rem;
+  font-weight: 800;
+  line-height: 13rem;
+  -webkit-text-stroke: 0.2rem #222;
+  color: transparent;
+  text-stroke: 0.2rem #222;
+}
+/* //섹션 css */
+.exp-list .exp-item {
+  margin-bottom: 3rem;
+}
+.exp-list .exp-item:last-child {
+  margin-bottom: 0;
+}
+.exp-list .exp-item .exp-date {
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 3rem;
+  letter-spacing: -0.05rem;
+}
+.exp-list .exp-item .exp-title {
+  margin-top: 0.4rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 3rem;
+  letter-spacing: -0.05rem;
+}
