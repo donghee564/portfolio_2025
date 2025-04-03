@@ -7,7 +7,7 @@ const Nav = () => {
   // 스크롤 위치에 따른 섹션 활성화
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "exp", "project", "contact"];
+      const sections = ["home", "exp", "skills", "projects", "contact"];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       for (const section of sections) {
@@ -40,9 +40,15 @@ const Nav = () => {
   };
 
   return (
-    <nav className={styles.nav}>
-      <div className={styles.logo}>DONGHEE</div>
-      <div className={styles.navItems}>
+    <nav className={styles.nav} role="navigation" aria-label="메인 네비게이션">
+      <div
+        className={styles.logo}
+        role="banner"
+        aria-label="DONGHEE 포트폴리오"
+      >
+        DONGHEE
+      </div>
+      <div className={styles.navItems} role="menubar" aria-label="메인 메뉴">
         <a
           href="#home"
           className={`${styles.navItem} ${
@@ -52,6 +58,9 @@ const Nav = () => {
             e.preventDefault();
             scrollToSection("home");
           }}
+          role="menuitem"
+          aria-current={activeSection === "home" ? "page" : undefined}
+          aria-label="홈 섹션으로 이동"
         >
           HOME
         </a>
@@ -64,20 +73,41 @@ const Nav = () => {
             e.preventDefault();
             scrollToSection("exp");
           }}
+          role="menuitem"
+          aria-current={activeSection === "exp" ? "page" : undefined}
+          aria-label="경력 섹션으로 이동"
         >
           EXP
         </a>
         <a
-          href="#project"
+          href="#skills"
           className={`${styles.navItem} ${
-            activeSection === "project" ? styles.active : ""
+            activeSection === "skills" ? styles.active : ""
           }`}
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection("project");
+            scrollToSection("skills");
           }}
+          role="menuitem"
+          aria-current={activeSection === "skills" ? "page" : undefined}
+          aria-label="스킬 섹션으로 이동"
         >
-          PROJECT
+          SKILLS
+        </a>
+        <a
+          href="#projects"
+          className={`${styles.navItem} ${
+            activeSection === "projects" ? styles.active : ""
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("projects");
+          }}
+          role="menuitem"
+          aria-current={activeSection === "projects" ? "page" : undefined}
+          aria-label="프로젝트 섹션으로 이동"
+        >
+          PROJECTS
         </a>
         <a
           href="#contact"
@@ -88,6 +118,9 @@ const Nav = () => {
             e.preventDefault();
             scrollToSection("contact");
           }}
+          role="menuitem"
+          aria-current={activeSection === "contact" ? "page" : undefined}
+          aria-label="연락처 섹션으로 이동"
         >
           CONTACT
         </a>

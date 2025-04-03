@@ -1,0 +1,87 @@
+.expItem {
+  width: 100%;
+}
+
+.expItemContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+  padding: 2rem;
+  word-break: keep-all;
+}
+
+.expItemContent::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.expItemContent::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 2px;
+  height: 100%;
+  background-color: #000;
+}
+
+.expItemContentInner {
+  width: 100%;
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+/* 첫 번째 항목 스타일 */
+.firstItem .expItemContent::after {
+  top: 50%;
+  height: 50%;
+}
+
+/* 마지막 항목 스타일 */
+.lastItem .expItemContent::after {
+  height: 50%;
+}
+
+/* 홀수 번째 항목 스타일 */
+.oddItem .expItemContent {
+  margin-left: auto;
+  justify-content: flex-start;
+}
+
+.oddItem .expItemContent::before {
+  right: auto;
+  left: -7px;
+}
+
+.oddItem .expItemContent::after {
+  right: auto;
+  left: -2px;
+}
+
+.oddItem .expItemContentInner {
+  text-align: left;
+}
+
+.expDate {
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 3rem;
+  letter-spacing: -0.05rem;
+}
+
+.expTitle {
+  margin-top: 0.4rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 3rem;
+  letter-spacing: -0.05rem;
+}

@@ -7,13 +7,45 @@
   padding: 0;
 }
 
-/* 폰트 로딩 전략 개선 */
+/* Pretendard 폰트 설정 */
 @font-face {
-  font-family: "Pretendard Variable";
-  src: url("/fonts/PretendardVariable.woff2") format("woff2-variations");
-  font-weight: 45 920;
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
-  font-display: block; /* swap 대신 block 사용 */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -42,13 +74,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  font-family: "Pretendard Variable", Pretendard, -apple-system,
-    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
-    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 16px;
   opacity: 0; /* 초기에는 숨김 */
   animation: fadeIn 0.1s ease-in forwards; /* 폰트 로드 후 표시 */
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease;
+  /* background-color: #ffffff; */
 }
 
 /* 폰트 로드 후 페이드인 애니메이션 */
@@ -124,7 +160,7 @@ svg {
   /* mix-blend-mode: difference; */
 }
 
-.app-container[data-theme="light"] {
+/* .app-container[data-theme="light"] {
   background-color: #fff;
   color: #000;
 }
@@ -132,7 +168,7 @@ svg {
 .app-container[data-theme="dark"] {
   background-color: #111;
   color: #fff;
-}
+} */
 
 .scroll-container {
   width: 100%;
@@ -144,21 +180,25 @@ svg {
 .section-container {
   width: 100%;
   height: 100dvh;
+  text-align: center;
 }
 .section-content-wrapper {
-  padding: 15% 0 0 12%;
+  padding: 15% 12%;
 }
 .section-title-text {
   margin-bottom: 3rem;
   font-size: 3rem;
   font-weight: 800;
   line-height: 3rem;
-  letter-spacing: -0.3rem;
+  letter-spacing: -0.15rem;
+  text-align: center;
 }
 .section-title {
   font-size: 14rem;
   font-weight: 800;
   line-height: 13rem;
+  letter-spacing: -0.3rem;
+  text-align: center;
 }
 .appostrophe {
   font-size: 10rem;
@@ -173,13 +213,12 @@ svg {
   line-height: 3rem;
   letter-spacing: -0.05rem;
 }
-.section-title .type-text-border {
+.section-title.type-text-border {
   font-size: 14rem;
   font-weight: 800;
   line-height: 13rem;
   -webkit-text-stroke: 0.2rem #222;
   color: transparent;
-  text-stroke: 0.2rem #222;
 }
 /* //섹션 css */
 .exp-list .exp-item {
@@ -200,4 +239,11 @@ svg {
   font-weight: 700;
   line-height: 3rem;
   letter-spacing: -0.05rem;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
 }

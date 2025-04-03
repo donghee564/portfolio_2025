@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import styles from "./SectionHome.module.css";
 
 const SectionHome = () => {
   // 애니메이션 variants 정의
@@ -11,6 +12,17 @@ const SectionHome = () => {
     },
   };
 
+  // 화살표 애니메이션 variants
+  const arrowAnimation = {
+    initial: { y: 0 },
+    animate: { y: 10 },
+    transition: {
+      duration: 1,
+      repeat: Infinity,
+      repeatType: "reverse",
+    },
+  };
+
   return (
     <section id="home" className="section-container">
       <div className="section-content-wrapper">
@@ -18,7 +30,7 @@ const SectionHome = () => {
           className="section-title-text"
           initial="initial"
           whileInView="animate"
-          viewport={{ once: false, margin: "-100px" }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
           transition={{ ...fadeInUp.transition, delay: 0.2 }}
         >
@@ -28,22 +40,30 @@ const SectionHome = () => {
           className="section-title"
           initial="initial"
           whileInView="animate"
-          viewport={{ once: false, margin: "-100px" }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
-          transition={{ ...fadeInUp.transition, delay: 0.4 }}
+          transition={{ ...fadeInUp.transition, delay: 0.5 }}
         >
           DONGHEE'<span className="appostrophe">S</span>
-          <br />
-          <span className="type-text-border">PORTFOLIO</span>
+        </motion.h1>
+        <motion.h1
+          className="section-title type-text-border"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          transition={{ ...fadeInUp.transition, delay: 0.8 }}
+        >
+          PORTFOLIO
         </motion.h1>
         <div className="section-content">
           <motion.p
             className="section-text"
             initial="initial"
             whileInView="animate"
-            viewport={{ once: false, margin: "-100px" }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            transition={{ ...fadeInUp.transition, delay: 0.8 }}
+            transition={{ ...fadeInUp.transition, delay: 1.1 }}
           >
             웹 퍼블리셔로서 다양한 프로젝트를 수행하며 UI/UX 개선과 웹 접근성
             향상에 기여해왔습니다.
@@ -55,6 +75,24 @@ const SectionHome = () => {
           </motion.p>
         </div>
       </div>
+      <motion.div
+        className={styles.scrollDown}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, margin: "30%" }}
+        variants={fadeInUp}
+        transition={{ ...fadeInUp.transition, delay: 1.4 }}
+      >
+        <span className={styles.scrollText}>Scroll Down</span>
+        <motion.div
+          className={styles.arrow}
+          variants={arrowAnimation}
+          initial="initial"
+          animate="animate"
+        >
+          ↓
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

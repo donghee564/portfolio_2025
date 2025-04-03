@@ -1,9 +1,38 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import styles from "./SectionExp.module.css";
+import ExpList from "../ExpList/ExpList";
+import { useRef } from "react";
 
 const SectionExp = () => {
-  // 애니메이션 variants 정의
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // 스프링 효과를 적용한 스크롤 진행도
+  const springScrollProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  // 스크롤 진행도에 따른 텍스트 애니메이션
+  // const textOpacity = useTransform(scrollYProgress, [0.5, 0.6], [1, 0]);
+
+  const titleMoveLeft = useTransform(
+    springScrollProgress,
+    [0.42, 0.65],
+    ["0%", "-200%"]
+  );
+
+  const titleMoveRight = useTransform(
+    springScrollProgress,
+    [0.42, 0.65],
+    ["0%", "250%"]
+  );
+
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -12,19 +41,54 @@ const SectionExp = () => {
     },
   };
 
+  // 경력 리스트 배열
+  const expItems = [
+    {
+      date: "2023.03 ~ 2025.03",
+      title: "하나카드 UI/UX 개선 및 운영 팀",
+      // text: "개선 및 운영 팀",
+    },
+    {
+      date: "2022.08 ~ 2023.02",
+      title: "삼성 컴플라이언스 통합 관리 시스템 개편 개발 프로젝트",
+      // text: "통합 관리 시스템 개편 개발 프로젝트",
+    },
+    {
+      date: "2022.01 ~ 2022.07",
+      title: "미래에셋 주택도시기금 홈페이지 구축 프로젝트",
+      // text: "홈페이지 구축 프로젝트",
+    },
+    {
+      date: "2022.10 ~ 2021.12",
+      title: "TRAVUT 홈페이지 구축 프로젝트",
+      // text: "홈페이지 구축 프로젝트",
+    },
+    {
+      date: "2021.06 ~ 2021.09",
+      title: "삼성전자 컴플라이언스 프로젝트",
+      // text: "Medallia CEM 프로젝트",
+    },
+  ];
+
   return (
     <section
       id="exp"
+      ref={sectionRef}
       className={`section-container ${styles.sectionContainer}`}
+      aria-labelledby="exp-title"
     >
-      <div className="section-content-wrapper">
+      <div
+        className={`section-content-wrapper ${styles.sectionContentWrapper}`}
+      >
         <motion.p
           className="section-title-text"
           initial="initial"
           whileInView="animate"
-          viewport={{ once: false, margin: "-100px" }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
           transition={{ ...fadeInUp.transition, delay: 0.2 }}
+          id="exp-title"
+          // style={{ opacity: textOpacity }}
         >
           업무 경력
         </motion.p>
@@ -32,72 +96,26 @@ const SectionExp = () => {
           className={`section-title ${styles.sectionTitle}`}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: false, margin: "-100px" }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
-          transition={{ ...fadeInUp.transition, delay: 0.4 }}
+          transition={{ ...fadeInUp.transition, delay: 0.5 }}
+          style={{ x: titleMoveLeft }}
         >
           JOB
-          <br />
-          <span className="type-text-border">EXPRIENCE</span>
+        </motion.h1>
+        <motion.h1
+          className={`section-title type-text-border ${styles.sectionTitle}`}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          transition={{ ...fadeInUp.transition, delay: 0.8 }}
+          style={{ x: titleMoveRight }}
+        >
+          EXPRIENCE
         </motion.h1>
         <div className="section-content">
-          <ul className="exp-list">
-            <motion.li
-              className="exp-item"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, margin: "-100px" }}
-              variants={fadeInUp}
-              transition={{ ...fadeInUp.transition, delay: 1.0 }}
-            >
-              <p className="exp-date">2025.01.01 ~ 2025.01.01</p>
-              <p className="exp-title">하나카드 UI/UX 개선</p>
-            </motion.li>
-            <motion.li
-              className="exp-item"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, margin: "-100px" }}
-              variants={fadeInUp}
-              transition={{ ...fadeInUp.transition, delay: 1.2 }}
-            >
-              <p className="exp-date">2025.01.01 ~ 2025.01.01</p>
-              <p className="exp-title">하나카드 UI/UX 개선</p>
-            </motion.li>
-            <motion.li
-              className="exp-item"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, margin: "-100px" }}
-              variants={fadeInUp}
-              transition={{ ...fadeInUp.transition, delay: 1.4 }}
-            >
-              <p className="exp-date">2025.01.01 ~ 2025.01.01</p>
-              <p className="exp-title">하나카드 UI/UX 개선</p>
-            </motion.li>
-            <motion.li
-              className="exp-item"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, margin: "-100px" }}
-              variants={fadeInUp}
-              transition={{ ...fadeInUp.transition, delay: 1.6 }}
-            >
-              <p className="exp-date">2025.01.01 ~ 2025.01.01</p>
-              <p className="exp-title">하나카드 UI/UX 개선</p>
-            </motion.li>
-            <motion.li
-              className="exp-item"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, margin: "-100px" }}
-              variants={fadeInUp}
-              transition={{ ...fadeInUp.transition, delay: 1.8 }}
-            >
-              <p className="exp-date">2025.01.01 ~ 2025.01.01</p>
-              <p className="exp-title">하나카드 UI/UX 개선</p>
-            </motion.li>
-          </ul>
+          <ExpList items={expItems} />
         </div>
       </div>
     </section>

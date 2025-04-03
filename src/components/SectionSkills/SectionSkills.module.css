@@ -1,0 +1,10 @@
+.sectionContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  z-index: 1;
+}
+
+.sectionTitle {
+  color: #ffffff;
+}
