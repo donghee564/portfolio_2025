@@ -157,22 +157,10 @@ svg {
 /* 전역 css */
 .app-container {
   min-height: 100vh;
-  /* mix-blend-mode: difference; */
 }
-
-/* .app-container[data-theme="light"] {
-  background-color: #fff;
-  color: #000;
-}
-
-.app-container[data-theme="dark"] {
-  background-color: #111;
-  color: #fff;
-} */
 
 .scroll-container {
   width: 100%;
-  /* height: 400vh; */
   overflow: hidden;
 }
 
@@ -180,25 +168,30 @@ svg {
 .section-container {
   width: 100%;
   height: 100dvh;
-  text-align: center;
+  /* text-align: center; */
+  position: relative;
 }
+
 .section-content-wrapper {
-  padding: 15% 12%;
+  padding: 12% 12%;
+  position: relative;
+  height: 100%;
 }
+
 .section-title-text {
   margin-bottom: 3rem;
   font-size: 3rem;
   font-weight: 800;
   line-height: 3rem;
   letter-spacing: -0.15rem;
-  text-align: center;
+  /* text-align: center; */
 }
 .section-title {
   font-size: 14rem;
   font-weight: 800;
   line-height: 13rem;
   letter-spacing: -0.3rem;
-  text-align: center;
+  /* text-align: center; */
 }
 .appostrophe {
   font-size: 10rem;

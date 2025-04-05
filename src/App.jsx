@@ -25,8 +25,8 @@ function App() {
   // 스크롤 진행도에 따른 배경색 변경
   const backgroundColor = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1], // 스크롤 진행도 구간 (각 섹션별로 나눔)
-    ["#fff", "#fff", "#000", "#fff", "#fff"] // 각 섹션별 배경색
+    [0, 0.28, 0.33, 0.76, 0.81, 1], // 스크롤 진행도 구간 (각 섹션별로 나눔)
+    ["#fff", "#fff", "#000", "#000", "#fff", "#fff"] // 각 섹션별 배경색
   );
 
   return (
@@ -35,7 +35,7 @@ function App() {
       <motion.div
         className="scroll-container"
         ref={containerRef}
-        style={{ backgroundColor }}
+        // style={{ backgroundColor }}
       >
         {/* <SectionView moveX={moveX} /> */}
         {/* <SectionWorks /> */}

@@ -1,10 +1,57 @@
 .sectionContainer {
   position: relative;
   width: 100%;
-  min-height: 100dvh;
+  min-height: 500dvh;
+  color: #ffffff;
   z-index: 1;
+  overflow: visible;
+}
+
+.sectionContentWrapper {
+  position: relative;
+  height: 100dvh;
+  padding: 15% 12%;
+  overflow: visible;
+}
+
+.sectionContentWrapper.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .sectionTitle {
+  position: relative;
+  left: 0;
   color: #ffffff;
+  z-index: 2;
+  text-align: center;
+}
+
+.skillList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3rem;
+  margin-top: 13rem;
+  margin-left: 117%;
+  width: max-content;
+  min-width: 100%;
+}
+
+.skillItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2.2rem 3.4rem;
+  font-size: 6rem;
+  font-weight: 700;
+  border: 5px solid #fafaf9;
+  border-radius: 10rem;
+  flex-shrink: 0;
 }

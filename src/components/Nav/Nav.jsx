@@ -62,7 +62,7 @@ const Nav = () => {
           aria-current={activeSection === "home" ? "page" : undefined}
           aria-label="홈 섹션으로 이동"
         >
-          HOME
+          ABOUT ME
         </a>
         <a
           href="#exp"

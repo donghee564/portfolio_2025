@@ -23,13 +23,13 @@ const SectionExp = () => {
 
   const titleMoveLeft = useTransform(
     springScrollProgress,
-    [0.42, 0.65],
+    [0.35, 0.65],
     ["0%", "-200%"]
   );
 
   const titleMoveRight = useTransform(
     springScrollProgress,
-    [0.42, 0.65],
+    [0.35, 0.65],
     ["0%", "250%"]
   );
 
@@ -60,12 +60,12 @@ const SectionExp = () => {
     },
     {
       date: "2022.10 ~ 2021.12",
-      title: "TRAVUT 홈페이지 구축 프로젝트",
+      title: "TRAVUT EM 구축 프로젝트",
       // text: "홈페이지 구축 프로젝트",
     },
     {
       date: "2021.06 ~ 2021.09",
-      title: "삼성전자 컴플라이언스 프로젝트",
+      title: "삼성전자 컴플라이언스 Medallia CEM 프로젝트",
       // text: "Medallia CEM 프로젝트",
     },
   ];
@@ -84,9 +84,9 @@ const SectionExp = () => {
           className="section-title-text"
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0%" }}
           variants={fadeInUp}
-          transition={{ ...fadeInUp.transition, delay: 0.2 }}
+          transition={{ ...fadeInUp.transition }}
           id="exp-title"
           // style={{ opacity: textOpacity }}
         >
@@ -96,9 +96,9 @@ const SectionExp = () => {
           className={`section-title ${styles.sectionTitle}`}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0%" }}
           variants={fadeInUp}
-          transition={{ ...fadeInUp.transition, delay: 0.5 }}
+          transition={{ ...fadeInUp.transition }}
           style={{ x: titleMoveLeft }}
         >
           JOB
@@ -107,9 +107,9 @@ const SectionExp = () => {
           className={`section-title type-text-border ${styles.sectionTitle}`}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0%" }}
           variants={fadeInUp}
-          transition={{ ...fadeInUp.transition, delay: 0.8 }}
+          transition={{ ...fadeInUp.transition }}
           style={{ x: titleMoveRight }}
         >
           EXPRIENCE

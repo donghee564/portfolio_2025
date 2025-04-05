@@ -1,11 +1,8 @@
 .sectionContainer {
   position: relative;
   width: 100%;
-  /* min-height: 100dvh; */
+  min-height: 100dvh;
   height: auto;
   transition: background-color 0.3s ease;
   z-index: 1;
-}
-.sectionContentWrapper {
-  padding-bottom: 12%;
 }
