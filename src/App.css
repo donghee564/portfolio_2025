@@ -7,6 +7,96 @@
   padding: 0;
 }
 
+/* margin-top 클래스들 */
+.margin-top-none {
+  margin-top: 0 !important;
+}
+
+.margin-top-5 {
+  margin-top: 0.5rem !important;
+}
+
+.margin-top-10 {
+  margin-top: 1rem !important;
+}
+
+.margin-top-15 {
+  margin-top: 1.5rem !important;
+}
+
+.margin-top-20 {
+  margin-top: 2rem !important;
+}
+
+.margin-top-25 {
+  margin-top: 2.5rem !important;
+}
+
+.margin-top-30 {
+  margin-top: 3rem !important;
+}
+
+.margin-top-35 {
+  margin-top: 3.5rem !important;
+}
+
+.margin-top-40 {
+  margin-top: 4rem !important;
+}
+
+.margin-top-45 {
+  margin-top: 4.5rem !important;
+}
+
+.margin-top-50 {
+  margin-top: 5rem !important;
+}
+
+/* margin-bottom 클래스들 */
+.margin-bottom-none {
+  margin-bottom: 0 !important;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 0.5rem !important;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 1rem !important;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 1.5rem !important;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 2rem !important;
+}
+
+.margin-bottom-25 {
+  margin-bottom: 2.5rem !important;
+}
+
+.margin-bottom-30 {
+  margin-bottom: 3rem !important;
+}
+
+.margin-bottom-35 {
+  margin-bottom: 3.5rem !important;
+}
+
+.margin-bottom-40 {
+  margin-bottom: 4rem !important;
+}
+
+.margin-bottom-45 {
+  margin-bottom: 4.5rem !important;
+}
+
+.margin-bottom-50 {
+  margin-bottom: 5rem !important;
+}
+
 /* Pretendard 폰트 설정 */
 @font-face {
   font-family: "Pretendard";
@@ -239,4 +329,11 @@ svg {
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+.text-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
 }

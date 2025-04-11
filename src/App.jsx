@@ -15,18 +15,19 @@ import { motion } from "framer-motion";
 function App() {
   // 스크롤 추적을 위한 ref 생성
   const containerRef = useRef(null);
+  const skillsRef = useRef(null);
 
   // 스크롤 진행도 추적
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: skillsRef,
     offset: ["start end", "end start"],
   });
 
   // 스크롤 진행도에 따른 배경색 변경
   const backgroundColor = useTransform(
     scrollYProgress,
-    [0, 0.28, 0.33, 0.76, 0.81, 1], // 스크롤 진행도 구간 (각 섹션별로 나눔)
-    ["#fff", "#fff", "#000", "#000", "#fff", "#fff"] // 각 섹션별 배경색
+    [0, 0.1, 0.9, 1], // SectionSkills 섹션의 시작과 끝을 기준으로
+    ["#fff", "#000", "#000", "#fff"] // 각 구간별 배경색
   );
 
   return (
@@ -35,13 +36,13 @@ function App() {
       <motion.div
         className="scroll-container"
         ref={containerRef}
-        // style={{ backgroundColor }}
+        style={{ backgroundColor }}
       >
         {/* <SectionView moveX={moveX} /> */}
         {/* <SectionWorks /> */}
         <SectionHome id="home" />
         <SectionExp id="exp" />
-        <SectionSkills id="skills" />
+        <SectionSkills ref={skillsRef} id="skills" />
         <SectionProjects id="projects" />
         <SectionContact id="contact" />
       </motion.div>

@@ -48,6 +48,20 @@ const SectionProjects = () => {
       date: "2025.01.01 ~ 2025.01.01",
       title: "하나카드 App<br />운영",
     },
+    {
+      id: 6,
+      image: "/src/assets/images/dummy_project_01.png",
+      alt: "하나카드 App 스크린샷 이미지",
+      date: "2025.01.01 ~ 2025.01.01",
+      title: "하나카드 App<br />운영",
+    },
+    {
+      id: 7,
+      image: "/src/assets/images/dummy_project_01.png",
+      alt: "하나카드 App 스크린샷 이미지",
+      date: "2025.01.01 ~ 2025.01.01",
+      title: "하나카드 App<br />운영",
+    },
   ];
 
   return (

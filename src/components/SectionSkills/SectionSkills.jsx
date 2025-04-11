@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, forwardRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import styles from "./SectionSkills.module.css";
 
-const SectionSkills = () => {
-  const sectionRef = useRef(null);
+const SectionSkills = forwardRef((props, ref) => {
   const [isFixed, setIsFixed] = useState(false);
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
+    target: ref,
     offset: ["start end", "end start"],
   });
 
@@ -19,7 +18,7 @@ const SectionSkills = () => {
   const titleMoveLeft = useTransform(
     springScrollProgress,
     [0.2, 0.5],
-    ["0%", "-20%"]
+    ["0%", "-30%"]
   );
 
   const listMoveLeft = useTransform(
@@ -79,8 +78,8 @@ const SectionSkills = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
         // skills 섹션이 뷰포트에 있고 끝부분이 뷰포트에 닿지 않았을 때만 fixed
@@ -92,11 +91,11 @@ const SectionSkills = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [ref]);
 
   return (
     <section
-      ref={sectionRef}
+      ref={ref}
       id="skills"
       className={`section-container ${styles.sectionContainer}`}
       aria-labelledby="skills-title"
@@ -151,6 +150,6 @@ const SectionSkills = () => {
       </div>
     </section>
   );
-};
+});
 
 export default SectionSkills;

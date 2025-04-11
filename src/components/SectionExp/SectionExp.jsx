@@ -23,13 +23,13 @@ const SectionExp = () => {
 
   const titleMoveLeft = useTransform(
     springScrollProgress,
-    [0.35, 0.65],
+    [0.35, 0.8],
     ["0%", "-200%"]
   );
 
   const titleMoveRight = useTransform(
     springScrollProgress,
-    [0.35, 0.65],
+    [0.35, 0.8],
     ["0%", "250%"]
   );
 

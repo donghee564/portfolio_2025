@@ -1,98 +1,70 @@
 import React from "react";
-import { motion } from "framer-motion";
-import styles from "./SectionHome.module.css";
+import AnimatedText from "./AnimatedText";
+import ScrollDownButton from "./ScrollDownButton";
 
 const SectionHome = () => {
-  // 애니메이션 variants 정의
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: {
-      duration: 0.6,
-    },
+  // 각 텍스트 블록의 시작 시점 계산
+  const calculateDelay = (text, previousDelay, isH1 = false) => {
+    const textLength = text.length;
+    const animationDuration = textLength * (isH1 ? 0.06 : 0.015); // 각 글자의 딜레이 (h1: 0.06초, 그 외: 0.015초)
+    return previousDelay + animationDuration;
   };
 
-  // 화살표 애니메이션 variants
-  const arrowAnimation = {
-    initial: { y: 0 },
-    animate: { y: 10 },
-    transition: {
-      duration: 1,
-      repeat: Infinity,
-      repeatType: "reverse",
-    },
-  };
+  // 각 텍스트 블록의 딜레이 계산
+  const text1 = "안녕하세요 퍼블리셔 한동희 입니다.";
+  const text2 = "DONGHEE's";
+  const text3 = "PORTFOLIO";
+  const text4 =
+    "웹 퍼블리셔로서 다양한 프로젝트를 수행하며 UI/UX 개선과 웹 접근성 향상에 기여해왔습니다.";
+  const text5 =
+    "특히 금융권 프로젝트를 경험하면서 정보의 명확한 전달과 사용자 편의성이 중요한 요소라는";
+  const text6 = "점을 깊이 이해하게 되었습니다.";
+
+  const delay1 = 0;
+  const delay2 = calculateDelay(text1, delay1);
+  const delay3 = calculateDelay(text2, delay2, true);
+  const delay4 = calculateDelay(text3, delay3, true);
+  const delay5 = calculateDelay(text4, delay4);
+  const delay6 = calculateDelay(text5, delay5);
 
   return (
-    <section id="home" className="section-container">
+    <section id="home" className="section-container" aria-label="홈 섹션">
       <div className="section-content-wrapper">
-        <motion.p
-          className="section-title-text"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-          transition={{ ...fadeInUp.transition, delay: 0.2 }}
-        >
-          안녕하세요 퍼블리셔 한동희 입니다.
-        </motion.p>
-        <motion.h1
-          className="section-title"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-          transition={{ ...fadeInUp.transition, delay: 0.5 }}
-        >
-          DONGHEE'<span className="appostrophe">S</span>
-        </motion.h1>
-        <motion.h1
+        <p className="section-title-text" role="heading" aria-level="2">
+          <span className="text-wrapper">
+            <AnimatedText text={text1} blockDelay={delay1} />
+          </span>
+        </p>
+
+        <h1 className="section-title" role="heading" aria-level="1">
+          <span className="text-wrapper">
+            <AnimatedText text={text2} blockDelay={delay2} isH1={true} />
+          </span>
+        </h1>
+        <h1
           className="section-title type-text-border"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-          transition={{ ...fadeInUp.transition, delay: 0.8 }}
+          role="heading"
+          aria-level="1"
         >
-          PORTFOLIO
-        </motion.h1>
+          <span className="text-wrapper">
+            <AnimatedText text={text3} blockDelay={delay3} isH1={true} />
+          </span>
+        </h1>
         <div className="section-content">
-          <motion.p
-            className="section-text"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            transition={{ ...fadeInUp.transition, delay: 1.1 }}
-          >
-            웹 퍼블리셔로서 다양한 프로젝트를 수행하며 UI/UX 개선과 웹 접근성
-            향상에 기여해왔습니다.
-            <br />
-            특히 금융권 프로젝트를 경험하면서 정보의 명확한 전달과 사용자
-            편의성이 중요한 요소라는
-            <br />
-            점을 깊이 이해하게 되었습니다. ...............
-          </motion.p>
+          <p className="section-text">
+            <span className="text-wrapper">
+              <AnimatedText text={text4} blockDelay={delay4} />
+            </span>
+            <span className="text-wrapper">
+              <AnimatedText text={text5} blockDelay={delay5} />
+            </span>
+            <span className="text-wrapper">
+              <AnimatedText text={text6} blockDelay={delay6} />
+            </span>
+          </p>
         </div>
       </div>
-      <motion.div
-        className={styles.scrollDown}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, margin: "30%" }}
-        variants={fadeInUp}
-        transition={{ ...fadeInUp.transition, delay: 1.4 }}
-      >
-        <span className={styles.scrollText}>Scroll Down</span>
-        <motion.div
-          className={styles.arrow}
-          variants={arrowAnimation}
-          initial="initial"
-          animate="animate"
-        >
-          ↓
-        </motion.div>
-      </motion.div>
+      <ScrollDownButton delay={delay6 + text6.length * 0.015} />
     </section>
   );
 };
