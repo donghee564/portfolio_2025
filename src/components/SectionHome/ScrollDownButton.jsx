@@ -1,39 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
-import styles from "./SectionHome.module.css";
+import styles from "./ScrollDownButton.module.css";
 
-const ScrollDownButton = ({ delay }) => {
-  // 화살표 애니메이션
-  const arrowAnimation = {
-    initial: { y: 0 },
-    animate: { y: 10 },
-    transition: {
-      duration: 1,
-      repeat: Infinity,
-      repeatType: "reverse",
-    },
-  };
-
+const ScrollDownButton = () => {
   return (
-    <motion.div
-      className={styles.scrollDown}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay }}
-      role="navigation"
-      aria-label="스크롤 다운 버튼"
-    >
+    <div className={styles.mouseContainer}>
+      <div className={styles.mouseOutline}>
+        <motion.div
+          className={styles.mouseDot}
+          animate={{
+            y: [0, 10, 0],
+            opacity: [1, 0.2, 1],
+            x: "-50%",
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
       <span className={styles.scrollText}>Scroll Down</span>
-      <motion.div
-        className={styles.arrow}
-        variants={arrowAnimation}
-        initial="initial"
-        animate="animate"
-        aria-hidden="true"
-      >
-        ↓
-      </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

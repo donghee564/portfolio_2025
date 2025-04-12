@@ -10,7 +10,6 @@
 .sectionContentWrapper {
   position: relative;
   height: 100dvh;
-  padding: 15% 12%;
   overflow: visible;
 }
 
@@ -54,4 +53,8 @@
   border: 5px solid #fafaf9;
   border-radius: 10rem;
   flex-shrink: 0;
+  transition: margin 0.3s ease-in-out;
+}
+.skillItem:hover {
+  margin: 0 3rem;
 }

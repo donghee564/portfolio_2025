@@ -1,6 +1,3 @@
-// import Cursor from "./components/Cursor/Cursor";
-// import { SectionWorks } from "./components/SectionWorks/SectionWorks";
-// import SectionView from "./components/ViewFrame/SectionView";
 import "./App.css";
 import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -10,6 +7,8 @@ import SectionExp from "./components/SectionExp/SectionExp";
 import SectionSkills from "./components/SectionSkills/SectionSkills";
 import SectionProjects from "./components/SectionProjects/SectionProjects";
 import SectionContact from "./components/SectionContact/SectionContact";
+import Cursor from "./components/Cursor/Cursor";
+
 import { motion } from "framer-motion";
 
 function App() {
@@ -32,21 +31,22 @@ function App() {
 
   return (
     <main className="app-container" role="main">
-      <Nav />
+      <Nav
+        backgroundColor={backgroundColor}
+        scrollYProgress={scrollYProgress}
+      />
       <motion.div
         className="scroll-container"
         ref={containerRef}
         style={{ backgroundColor }}
       >
-        {/* <SectionView moveX={moveX} /> */}
-        {/* <SectionWorks /> */}
         <SectionHome id="home" />
         <SectionExp id="exp" />
         <SectionSkills ref={skillsRef} id="skills" />
         <SectionProjects id="projects" />
         <SectionContact id="contact" />
       </motion.div>
-      {/* <Cursor /> */}
+      <Cursor />
     </main>
   );
 }

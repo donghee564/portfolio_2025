@@ -1,8 +1,34 @@
 import React, { useState, useEffect } from "react";
+import { motion, useTransform, useMotionValueEvent } from "framer-motion";
 import styles from "./Nav.module.css";
 
-const Nav = () => {
+const Nav = ({ backgroundColor, scrollYProgress }) => {
   const [activeSection, setActiveSection] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // 스크롤 진행도에 따른 배경색 변경
+  const navBackground = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.9, 1],
+    [
+      "rgba(255, 255, 255, 0.8)",
+      "rgba(0, 0, 0, 0.8)",
+      "rgba(0, 0, 0, 0.8)",
+      "rgba(255, 255, 255, 0.8)",
+    ]
+  );
+
+  // 스크롤 진행도에 따른 CSS 변수 값 변경
+  const textColor = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.9, 1],
+    ["#000", "#fff", "#fff", "#000"]
+  );
+
+  // CSS 변수 업데이트
+  useMotionValueEvent(textColor, "change", (latest) => {
+    document.documentElement.style.setProperty("--nav-text-color", latest);
+  });
 
   // 스크롤 위치에 따른 섹션 활성화
   useEffect(() => {
@@ -25,6 +51,7 @@ const Nav = () => {
           }
         }
       }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -40,7 +67,12 @@ const Nav = () => {
   };
 
   return (
-    <nav className={styles.nav} role="navigation" aria-label="메인 네비게이션">
+    <motion.nav
+      className={styles.nav}
+      role="navigation"
+      aria-label="메인 네비게이션"
+      style={{ backgroundColor: navBackground }}
+    >
       <div
         className={styles.logo}
         role="banner"
@@ -125,7 +157,7 @@ const Nav = () => {
           CONTACT
         </a>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

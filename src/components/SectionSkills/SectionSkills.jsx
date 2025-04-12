@@ -18,7 +18,7 @@ const SectionSkills = forwardRef((props, ref) => {
   const titleMoveLeft = useTransform(
     springScrollProgress,
     [0.2, 0.5],
-    ["0%", "-30%"]
+    ["0%", "-25%"]
   );
 
   const listMoveLeft = useTransform(

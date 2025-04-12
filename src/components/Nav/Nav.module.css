@@ -9,12 +9,14 @@
   align-items: center;
   z-index: 100;
   background-color: #fff;
+  transition: all 0.3s ease;
 }
 
 .logo {
   font-size: 2.4rem;
   font-weight: 700;
   letter-spacing: -0.05rem;
+  color: var(--nav-text-color);
 }
 
 .navItems {
@@ -25,20 +27,17 @@
 }
 
 .navItem {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 500;
   letter-spacing: -0.05rem;
   margin-left: 6%;
   position: relative;
   cursor: pointer;
+  color: var(--nav-text-color);
 }
 
 .navItem:first-child {
   margin-left: 0;
-}
-
-.navItem:hover {
-  opacity: 0.7;
 }
 
 .navItem.active {
@@ -52,5 +51,5 @@
   left: 0;
   width: 100%;
   height: 0.2rem;
-  background-color: #000;
+  background-color: var(--nav-text-color);
 }
