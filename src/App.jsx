@@ -40,11 +40,13 @@ function App() {
         ref={containerRef}
         style={{ backgroundColor }}
       >
-        <SectionHome id="home" />
-        <SectionExp id="exp" />
-        <SectionSkills ref={skillsRef} id="skills" />
-        <SectionProjects id="projects" />
-        <SectionContact id="contact" />
+        <div className="contents-wrap">
+          <SectionHome id="home" />
+          <SectionExp id="exp" />
+          <SectionSkills ref={skillsRef} id="skills" />
+          <SectionProjects id="projects" />
+          <SectionContact id="contact" />
+        </div>
       </motion.div>
       <Cursor />
     </main>

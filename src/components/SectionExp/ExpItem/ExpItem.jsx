@@ -17,8 +17,7 @@ const ExpItem = ({ date, title, text, delay, isFirst, isLast, isOdd }) => {
         isLast ? styles.lastItem : ""
       } ${isOdd ? styles.oddItem : ""}`}
       initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: "-30%" }}
+      animate="animate"
       variants={fadeInUp}
       transition={{ ...fadeInUp.transition, delay }}
       role="listitem"

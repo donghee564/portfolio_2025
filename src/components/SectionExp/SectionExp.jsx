@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import styles from "./SectionExp.module.css";
-import ExpList from "../ExpList/ExpList";
+import ExpList from "./ExpList/ExpList";
 import { useRef } from "react";
 
 const SectionExp = () => {
@@ -19,17 +19,21 @@ const SectionExp = () => {
   });
 
   // 스크롤 진행도에 따른 텍스트 애니메이션
-  // const textOpacity = useTransform(scrollYProgress, [0.5, 0.6], [1, 0]);
+  const expListOpacity = useTransform(
+    springScrollProgress,
+    [0.45, 0.5],
+    [0, 1]
+  );
 
   const titleMoveLeft = useTransform(
     springScrollProgress,
-    [0.35, 0.8],
+    [0.43, 0.8],
     ["0%", "-200%"]
   );
 
   const titleMoveRight = useTransform(
     springScrollProgress,
-    [0.35, 0.8],
+    [0.43, 0.8],
     ["0%", "250%"]
   );
 
@@ -46,27 +50,22 @@ const SectionExp = () => {
     {
       date: "2023.03 ~ 2025.03",
       title: "하나카드 UI/UX 개선 및 운영 팀",
-      // text: "개선 및 운영 팀",
     },
     {
       date: "2022.08 ~ 2023.02",
       title: "삼성 컴플라이언스 통합 관리 시스템 개편 개발 프로젝트",
-      // text: "통합 관리 시스템 개편 개발 프로젝트",
     },
     {
       date: "2022.01 ~ 2022.07",
       title: "미래에셋 주택도시기금 홈페이지 구축 프로젝트",
-      // text: "홈페이지 구축 프로젝트",
     },
     {
       date: "2022.10 ~ 2021.12",
       title: "TRAVUT EM 구축 프로젝트",
-      // text: "홈페이지 구축 프로젝트",
     },
     {
       date: "2021.06 ~ 2021.09",
       title: "삼성전자 컴플라이언스 Medallia CEM 프로젝트",
-      // text: "Medallia CEM 프로젝트",
     },
   ];
 
@@ -88,7 +87,6 @@ const SectionExp = () => {
           variants={fadeInUp}
           transition={{ ...fadeInUp.transition }}
           id="exp-title"
-          // style={{ opacity: textOpacity }}
         >
           업무 경력
         </motion.p>
@@ -114,9 +112,12 @@ const SectionExp = () => {
         >
           EXPRIENCE
         </motion.h1>
-        <div className="section-content">
+        <motion.div
+          className="section-content"
+          style={{ opacity: expListOpacity }}
+        >
           <ExpList items={expItems} />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -36,7 +36,7 @@
   justify-content: flex-start;
   gap: 3rem;
   margin-top: 13rem;
-  margin-left: 117%;
+  margin-left: 100vw;
   width: max-content;
   min-width: 100%;
 }

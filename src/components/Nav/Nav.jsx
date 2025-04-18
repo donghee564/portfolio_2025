@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { motion, useTransform, useMotionValueEvent } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Nav.module.css";
 
 const Nav = ({ backgroundColor, scrollYProgress }) => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // 스크롤 진행도에 따른 배경색 변경
   const navBackground = useTransform(
@@ -63,7 +66,13 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false); // 메뉴 클릭 후 메뉴 닫기
     }
+  };
+
+  // 메뉴 토글 핸들러
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -74,13 +83,25 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
       style={{ backgroundColor: navBackground }}
     >
       <div
+        style={{ backgroundColor: textColor }}
         className={styles.logo}
-        role="banner"
         aria-label="DONGHEE 포트폴리오"
       >
-        DONGHEE
+        <span className={styles.logoText}>D.</span>
       </div>
-      <div className={styles.navItems} role="menubar" aria-label="메인 메뉴">
+      <button
+        className={styles.menuButton}
+        onClick={toggleMenu}
+        aria-label="메뉴"
+        aria-expanded={isMenuOpen}
+      >
+        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} size="lg" />
+      </button>
+      <div
+        className={`${styles.navItems} ${isMenuOpen ? styles.menuOpen : ""}`}
+        role="menubar"
+        aria-label="메인 메뉴"
+      >
         <a
           href="#home"
           className={`${styles.navItem} ${

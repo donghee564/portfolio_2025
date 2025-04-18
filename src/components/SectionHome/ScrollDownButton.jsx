@@ -2,9 +2,18 @@ import React from "react";
 import { motion } from "framer-motion";
 import styles from "./ScrollDownButton.module.css";
 
-const ScrollDownButton = () => {
+const ScrollDownButton = ({ delay = 0 }) => {
   return (
-    <div className={styles.mouseContainer}>
+    <motion.div
+      className={styles.mouseContainer}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.5,
+        ease: "easeOut",
+        delay: delay,
+      }}
+    >
       <div className={styles.mouseOutline}>
         <motion.div
           className={styles.mouseDot}
@@ -21,7 +30,7 @@ const ScrollDownButton = () => {
         />
       </div>
       <span className={styles.scrollText}>Scroll Down</span>
-    </div>
+    </motion.div>
   );
 };
 
