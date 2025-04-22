@@ -50,12 +50,12 @@ const SectionContact = () => {
               <div className={styles.contactInfo}>
                 <span className={styles.contactLabel}>이메일</span>
                 <a
-                  href="mailto:poohahh@naver.com"
+                  href="mailto:poohaha8974@gmail.com"
                   className={styles.contactValue}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  poohahh@naver.com
+                  poohaha8974@gmail.com
                 </a>
               </div>
             </motion.li>
@@ -76,12 +76,12 @@ const SectionContact = () => {
               <div className={styles.contactInfo}>
                 <span className={styles.contactLabel}>전화번호</span>
                 <a
-                  href="tel:01012345678"
+                  href="tel:01075158974"
                   className={styles.contactValue}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  010-1234-5678
+                  010-7515-8974
                 </a>
               </div>
             </motion.li>
@@ -102,12 +102,12 @@ const SectionContact = () => {
               <div className={styles.contactInfo}>
                 <span className={styles.contactLabel}>깃허브</span>
                 <a
-                  href="https://github.com/poohahh"
+                  href="https://github.com/donghee564"
                   className={styles.contactValue}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  github.com/poohahh
+                  https://github.com/donghee564
                 </a>
               </div>
             </motion.li>

@@ -58,3 +58,18 @@
 .skillItem:hover {
   margin: 0 3rem;
 }
+
+/* ==========반응형 css========== */
+@media screen and (max-width: 846px) {
+  .skillList {
+    gap: 2rem;
+  }
+  .skillItem {
+    font-size: 4rem;
+    padding: 1.5rem 2.5rem;
+  }
+  .skillItem:hover {
+    margin: 0 2rem;
+  }
+}
+/* //==========반응형 css========== */

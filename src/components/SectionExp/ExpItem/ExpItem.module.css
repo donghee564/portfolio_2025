@@ -85,3 +85,30 @@
   line-height: 3rem;
   letter-spacing: -0.05rem;
 }
+
+/* ==========반응형 css========== */
+@media screen and (max-width: 767px) {
+  .expItemContent {
+    padding: 1rem 2rem;
+  }
+  .expDate {
+    font-size: 1.8rem;
+  }
+  .expTitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .expItemContent {
+    padding: 0 1.5rem;
+  }
+  .expDate {
+    font-size: 1.5rem;
+  }
+  .expTitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* //==========반응형 css========== */

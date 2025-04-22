@@ -48,3 +48,33 @@
   flex-direction: row-reverse;
   text-align: right;
 }
+
+/* ==========반응형 css========== */
+@media screen and (max-width: 846px) {
+  .projectItem,
+  .projectItem:nth-child(2n) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .projectItemImage {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .projectItem {
+    margin-bottom: 20%;
+    gap: 3rem;
+  }
+  .projectItemDate {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
+  .projectItemTitle {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
+}
+/* //==========반응형 css========== */

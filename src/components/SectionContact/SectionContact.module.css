@@ -8,6 +8,7 @@
 .contactItem {
   display: flex;
   align-items: center;
+  max-width: 75%;
   padding: 2rem 3rem;
   margin-bottom: 2rem;
   border: 1px solid #ddd;
@@ -48,3 +49,11 @@
   text-decoration: underline;
   color: #007bff;
 }
+
+/* ==========반응형 css========== */
+@media screen and (max-width: 1000px) {
+  .contactItem {
+    max-width: 100%;
+  }
+}
+/* //==========반응형 css========== */

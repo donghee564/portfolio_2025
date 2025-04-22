@@ -343,3 +343,42 @@ svg {
   width: 100%;
   overflow: hidden;
 }
+
+/* ==========반응형 css========== */
+@media screen and (max-width: 1000px) {
+  .section-content-wrapper {
+    padding: 14% 5%;
+  }
+  .section-title,
+  .section-title.type-text-border {
+    font-size: 12rem;
+    line-height: 12rem;
+    letter-spacing: -0.2rem;
+  }
+  .section-title-text {
+    font-size: 2.5rem;
+  }
+  .section-content {
+    margin-top: 5rem;
+  }
+  .section-text {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 847px) {
+  .section-title,
+  .section-title.type-text-border {
+    font-size: 8rem;
+    line-height: normal;
+  }
+}
+@media screen and (max-width: 767px) {
+  .section-content-wrapper {
+    padding: 12rem 5% 6rem;
+  }
+  .section-title,
+  .section-title.type-text-border {
+    font-size: 6rem;
+  }
+}
+/* //==========반응형 css========== */

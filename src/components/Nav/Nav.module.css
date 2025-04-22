@@ -68,7 +68,8 @@
   height: 0.2rem;
   background-color: var(--nav-text-color);
 }
-/* 반응형 css */
+
+/* ==========반응형 css========== */
 @media screen and (max-width: 1000px) {
   .logo {
     width: 4rem;
@@ -112,6 +113,9 @@
 }
 
 @media screen and (max-width: 767px) {
+  .nav {
+    padding: 1rem 5%;
+  }
   .logo {
     width: 3.5rem;
     height: 3.5rem;
@@ -128,3 +132,4 @@
     margin: 3rem 0 0 13%;
   }
 }
+/* //==========반응형 css========== */
