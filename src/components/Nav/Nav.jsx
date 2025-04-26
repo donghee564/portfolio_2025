@@ -160,7 +160,7 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
           aria-current={activeSection === "projects" ? "page" : undefined}
           aria-label="프로젝트 섹션으로 이동"
         >
-          PROJECTS
+          RECENT
         </a>
         <a
           href="#contact"

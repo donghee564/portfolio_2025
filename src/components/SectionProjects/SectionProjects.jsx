@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styles from "./SectionProjects.module.css";
-import ProjectItem from "./ProjectItem";
+import ProjectItem from "./ProjectItem/ProjectItem";
+import ProjectItemModal from "./ProjectItemModal/ProjectItemModal";
+import { useState } from "react";
 
 const SectionProjects = () => {
   const fadeInUp = {
@@ -16,51 +18,23 @@ const SectionProjects = () => {
     {
       id: 1,
       image: "/src/assets/images/dummy_project_01.png",
-      alt: "하나카드 App 스크린샷 이미지",
-      date: "2025.01.01 ~ 2025.01.01",
-      title: "하나카드 App<br />운영",
+      alt: "하나카드 App 로고 이미지",
+      date: "2023.03.31 ~ 2025.03.31",
+      title: "하나카드 App,<br />PC 웹사이트 운영",
     },
     {
       id: 2,
-      image: "/src/assets/images/dummy_project_01.png",
-      alt: "하나카드 App 스크린샷 이미지",
+      image: "/src/assets/images/project_thumb_02.png",
+      alt: "하나Pay 스크린샷 이미지",
       date: "2025.01.01 ~ 2025.01.01",
-      title: "하나카드 App<br />운영",
+      title: "하나Pay<br />재무상태진단표 구축",
     },
     {
       id: 3,
-      image: "/src/assets/images/dummy_project_01.png",
-      alt: "하나카드 App 스크린샷 이미지",
+      image: "/src/assets/images/project_thumb_03.png",
+      alt: "하나Pay 스크린샷 이미지",
       date: "2025.01.01 ~ 2025.01.01",
-      title: "하나카드 App<br />운영",
-    },
-    {
-      id: 4,
-      image: "/src/assets/images/dummy_project_01.png",
-      alt: "하나카드 App 스크린샷 이미지",
-      date: "2025.01.01 ~ 2025.01.01",
-      title: "하나카드 App<br />운영",
-    },
-    {
-      id: 5,
-      image: "/src/assets/images/dummy_project_01.png",
-      alt: "하나카드 App 스크린샷 이미지",
-      date: "2025.01.01 ~ 2025.01.01",
-      title: "하나카드 App<br />운영",
-    },
-    {
-      id: 6,
-      image: "/src/assets/images/dummy_project_01.png",
-      alt: "하나카드 App 스크린샷 이미지",
-      date: "2025.01.01 ~ 2025.01.01",
-      title: "하나카드 App<br />운영",
-    },
-    {
-      id: 7,
-      image: "/src/assets/images/dummy_project_01.png",
-      alt: "하나카드 App 스크린샷 이미지",
-      date: "2025.01.01 ~ 2025.01.01",
-      title: "하나카드 App<br />운영",
+      title: "하나Pay<br />트래블버킷 이벤트 구축축",
     },
   ];
 
@@ -100,7 +74,7 @@ const SectionProjects = () => {
           variants={fadeInUp}
           transition={{ ...fadeInUp.transition, delay: 0.4 }}
         >
-          PROJECTS
+          WORKS
         </motion.h1>
         <p className="visually-hidden">최근에 진행한 프로젝트 목록입니다.</p>
         <ul className={styles.projectList} aria-label="프로젝트 목록">

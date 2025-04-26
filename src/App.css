@@ -269,7 +269,7 @@ svg {
 }
 
 .section-content-wrapper {
-  padding: 10%;
+  padding: 15rem 10rem;
   position: relative;
   height: 100%;
 }
@@ -347,7 +347,7 @@ svg {
 /* ==========반응형 css========== */
 @media screen and (max-width: 1000px) {
   .section-content-wrapper {
-    padding: 14% 5%;
+    padding: 15rem 10rem;
   }
   .section-title,
   .section-title.type-text-border {
@@ -365,20 +365,26 @@ svg {
     font-size: 2rem;
   }
 }
-@media screen and (max-width: 847px) {
+@media screen and (max-width: 870px) {
   .section-title,
   .section-title.type-text-border {
-    font-size: 8rem;
-    line-height: normal;
+    font-size: 9rem;
+    line-height: 9rem;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 701px) {
+  .section-content-wrapper {
+    padding: 15rem 5rem;
+  }
+}
+@media screen and (max-width: 610px) {
   .section-content-wrapper {
     padding: 12rem 5% 6rem;
   }
   .section-title,
   .section-title.type-text-border {
     font-size: 6rem;
+    line-height: 6rem;
   }
 }
 /* //==========반응형 css========== */
