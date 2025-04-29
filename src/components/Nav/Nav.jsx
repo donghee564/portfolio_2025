@@ -75,6 +75,22 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // 로고 클릭 시 최상단으로 스크롤
+  const handleLogoClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    setIsMenuOpen(false);
+  };
+
+  // 로고 키보드 이벤트
+  const handleLogoKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      handleLogoClick();
+    }
+  };
+
   return (
     <motion.nav
       className={styles.nav}
@@ -86,6 +102,10 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
         style={{ backgroundColor: textColor }}
         className={styles.logo}
         aria-label="DONGHEE 포트폴리오"
+        onClick={handleLogoClick}
+        role="button"
+        tabIndex="0"
+        onKeyDown={handleLogoKeyDown}
       >
         <span className={styles.logoText}>D.</span>
       </div>

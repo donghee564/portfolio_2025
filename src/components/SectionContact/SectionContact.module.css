@@ -56,4 +56,22 @@
     max-width: 100%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .contactItem {
+    padding: 1rem 2rem;
+  }
+  .contactIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 2rem;
+  }
+  .contactLabel {
+    font-size: 1.5rem;
+  }
+  .contactValue {
+    font-size: 1.5rem;
+  }
+}
+
 /* //==========반응형 css========== */

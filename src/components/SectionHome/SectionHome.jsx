@@ -1,6 +1,6 @@
 import React from "react";
-import AnimatedText from "./AnimatedText";
-import ScrollDownButton from "./ScrollDownButton";
+import AnimatedText from "./AnimatedText/AnimatedText";
+import ScrollDownButton from "./ScrollDownButton/ScrollDownButton";
 
 const SectionHome = () => {
   // 각 텍스트 블록의 시작 시점 계산
