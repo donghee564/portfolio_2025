@@ -4,7 +4,14 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const ProjectItemModal = ({ isOpen, onClose, title, date }) => {
+const ProjectItemModal = ({
+  isOpen,
+  onClose,
+  ModalTitle,
+  date,
+  ModalImage,
+  ModalDescription,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -20,8 +27,21 @@ const ProjectItemModal = ({ isOpen, onClose, title, date }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <h2 className={styles.modalTitle}>{title}</h2>
           <p className={styles.modalDate}>{date}</p>
+          <h2 className={styles.modalTitle}>{ModalTitle}</h2>
+          <p className={styles.modalDescription}>{ModalDescription}</p>
+          <div className={styles.modalImageWrap}>
+            <img
+              className={styles.modalImage}
+              src={ModalImage}
+              alt={ModalTitle}
+            />
+            <img
+              className={styles.modalImage}
+              src={ModalImage}
+              alt={ModalTitle}
+            />
+          </div>
         </motion.div>
       </div>
     </div>

@@ -21,6 +21,9 @@ const SectionProjects = () => {
       alt: "하나카드 App 로고 이미지",
       date: "2023.03.31 ~ 2025.03.31",
       title: "하나카드 App,<br />PC 웹사이트 운영",
+      modalTitle: "하나카드 App, PC 웹사이트 운영",
+      modalImage: "/src/assets/images/dummy_project_01.png",
+      modalDescription: "하나카드 App, PC 웹사이트 운영",
     },
     {
       id: 2,
@@ -28,13 +31,19 @@ const SectionProjects = () => {
       alt: "하나Pay 스크린샷 이미지",
       date: "2025.01.01 ~ 2025.01.01",
       title: "하나Pay<br />재무상태진단표 구축",
+      modalTitle: "하나Pay 재무상태진단표 구축",
+      modalImage: "/src/assets/images/project_thumb_02.png",
+      modalDescription: "하나Pay 재무상태진단표 구축",
     },
     {
       id: 3,
       image: "/src/assets/images/project_thumb_03.png",
       alt: "하나Pay 스크린샷 이미지",
       date: "2025.01.01 ~ 2025.01.01",
-      title: "하나Pay<br />트래블버킷 이벤트 구축축",
+      title: "하나Pay<br />트래블버킷 이벤트 구축",
+      modalTitle: "하나Pay 트래블버킷 이벤트 구축",
+      modalImage: "/src/assets/images/project_thumb_03.png",
+      modalDescription: "하나Pay 트래블버킷 이벤트 구축",
     },
   ];
 
@@ -85,6 +94,9 @@ const SectionProjects = () => {
               alt={project.alt}
               date={project.date}
               title={project.title}
+              modalTitle={project.modalTitle}
+              modalImage={project.modalImage}
+              modalDescription={project.modalDescription}
             />
           ))}
         </ul>
