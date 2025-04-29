@@ -10,6 +10,10 @@ import SectionContact from "./components/SectionContact/SectionContact";
 import Cursor from "./components/Cursor/Cursor";
 import Loading from "./components/Loading/Loading";
 import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+
+// 로딩 상태를 전역적으로 관리하기 위한 Context 생성
+export const LoadingContext = React.createContext();
 
 function App() {
   // 스크롤 추적을 위한 ref 생성
@@ -64,29 +68,34 @@ function App() {
   );
 
   return (
-    <main className="app-container" role="main">
-      <AnimatePresence>
-        {isLoading && <Loading progress={loadingProgress} />}
-      </AnimatePresence>
-      <Nav
-        backgroundColor={backgroundColor}
-        scrollYProgress={scrollYProgress}
-      />
-      <motion.div
-        className="scroll-container"
-        ref={containerRef}
-        style={{ backgroundColor }}
-      >
-        <div className="contents-wrap">
-          <SectionHome id="home" />
-          <SectionExp id="exp" />
-          <SectionSkills ref={skillsRef} id="skills" />
-          <SectionProjects id="projects" />
-          <SectionContact id="contact" />
-        </div>
-      </motion.div>
-      <Cursor />
-    </main>
+    <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+      <main className="app-container" role="main">
+        <AnimatePresence>
+          {isLoading && <Loading progress={loadingProgress} />}
+        </AnimatePresence>
+        <Nav
+          backgroundColor={backgroundColor}
+          scrollYProgress={scrollYProgress}
+        />
+        <motion.div
+          className="scroll-container"
+          ref={containerRef}
+          style={{ backgroundColor }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isLoading ? 0 : 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="contents-wrap">
+            <SectionHome id="home" />
+            <SectionExp id="exp" />
+            <SectionSkills ref={skillsRef} id="skills" />
+            <SectionProjects id="projects" />
+            <SectionContact id="contact" />
+          </div>
+        </motion.div>
+        <Cursor />
+      </main>
+    </LoadingContext.Provider>
   );
 }
 
