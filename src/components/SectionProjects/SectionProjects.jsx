@@ -30,8 +30,9 @@ const SectionProjects = () => {
       date: "2024.01",
       image: "/images/project_thumb_02.png",
       modalTitle: "하나Pay 재무상태진단표",
-      modalImage: "/images/project_thumb_02.png",
-      modalDescription: "하나Pay 재무상태진단표 설명",
+      modalImage: "/images/project_detail_01.png",
+      modalDescription:
+        "- 퍼블리싱 100%<br />- 접근경로 : 하나Pay > 자산탭 > 재무상태진단표 보러가기<br />- Chart.js 를 활용하여 바 차트, 라인 차트, 도넛 차트 등 다양한 차트 구현<br />- 금액포멧 처리 및 차트 데이터 동적 변경 가능",
     },
     {
       id: 3,

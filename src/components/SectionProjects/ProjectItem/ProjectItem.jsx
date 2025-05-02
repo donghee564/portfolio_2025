@@ -55,18 +55,27 @@ const ProjectItem = ({
         animate: { opacity: 1, y: 0 },
       }}
       transition={{ duration: 0.45, delay: 0.2 }}
-      onClick={handleClick}
     >
-      {/* 프로젝트 썸네일 이미지 */}
-      <img className={styles.projectItemImage} src={image} alt={alt} />
-      {/* 프로젝트 정보 (날짜, 제목) */}
-      <div className={styles.projectItemTextWrap}>
-        <p className={styles.projectItemDate}>{date}</p>
-        <h3
-          className={styles.projectItemTitle}
-          dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, "<br />") }}
-        />
-      </div>
+      <a
+        className={styles.projectItemLink}
+        title={title + " 프로젝트 상세 보기"}
+        onClick={(e) => {
+          e.preventDefault();
+          handleClick();
+        }}
+        rel="noopener noreferrer"
+      >
+        {/* 프로젝트 썸네일 이미지 */}
+        <img className={styles.projectItemImage} src={image} alt={alt} />
+        {/* 프로젝트 정보 (날짜, 제목) */}
+        <div className={styles.projectItemTextWrap}>
+          <p className={styles.projectItemDate}>{date}</p>
+          <h3
+            className={styles.projectItemTitle}
+            dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, "<br />") }}
+          />
+        </div>
+      </a>
       {/* 프로젝트 상세 모달 */}
       <ProjectItemModal
         isOpen={isModalOpen}

@@ -11,10 +11,27 @@
   mix-blend-mode: difference;
   transform-origin: center;
   will-change: transform;
+  transition: width 0.3s ease, height 0.3s ease;
 }
 
 /* 버튼, 링크 호버 시 커서 커지게 변경 */
 .cursor.hovered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  padding: 1rem;
   background-color: #fff;
   pointer-events: none;
+}
+
+.clickText {
+  display: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.cursor.hovered .clickText {
+  display: block;
 }

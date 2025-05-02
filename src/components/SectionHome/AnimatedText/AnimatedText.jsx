@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import { LoadingContext } from "../../../App";
 
 const AnimatedText = ({ text, blockDelay, isH1 = false }) => {
+  const { isLoading } = useContext(LoadingContext);
+
   // 텍스트 분할 애니메이션
   const createTextAnimation = (blockDelay, isH1) => ({
     initial: { y: "100%", opacity: 0 },
     animate: (i) => ({
-      y: "0%",
-      opacity: 1,
+      y: isLoading ? "100%" : "0%",
+      opacity: isLoading ? 0 : 1,
       transition: {
-        delay: blockDelay + i * (isH1 ? 0.06 : 0.015),
+        delay: isLoading ? 0 : blockDelay + i * (isH1 ? 0.06 : 0.015),
         duration: 0.3,
         ease: "easeOut",
       },
@@ -23,9 +26,8 @@ const AnimatedText = ({ text, blockDelay, isH1 = false }) => {
       <motion.span
         key={i}
         custom={i}
-        variants={textAnimation}
-        initial="initial"
-        animate="animate"
+        initial={textAnimation.initial}
+        animate={textAnimation.animate}
         style={{ display: "inline-block" }}
         aria-hidden="true"
       >

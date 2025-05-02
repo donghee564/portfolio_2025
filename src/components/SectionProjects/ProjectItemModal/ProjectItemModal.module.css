@@ -13,13 +13,19 @@
 
 .modalContent {
   background-color: #fff;
-  padding: 3rem;
-  /* border-radius: 12px; */
   max-width: 855px;
   width: 90%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   text-align: left;
+}
+
+.modalHeader {
+  padding: 3rem 3rem 0 3rem;
+}
+
+.modalDescription {
+  padding: 0 3rem 3rem 3rem;
 }
 
 .closeButton {

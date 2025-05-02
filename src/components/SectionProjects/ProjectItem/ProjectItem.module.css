@@ -1,9 +1,13 @@
 .projectItem {
+  width: 100%;
+  margin-bottom: 15%;
+}
+
+.projectItemLink {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 6rem;
-  margin-bottom: 15%;
 }
 
 .projectItem:last-child {
@@ -28,7 +32,7 @@
   font-weight: 700;
 }
 
-.projectItem:nth-child(2n) {
+.projectItem:nth-child(2n) .projectItemLink {
   flex-direction: row-reverse;
   text-align: right;
 }

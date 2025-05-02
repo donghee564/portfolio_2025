@@ -27,15 +27,18 @@ const ProjectItemModal = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <p className={styles.modalDate}>{date}</p>
-          <h2 className={styles.modalTitle}>{ModalTitle}</h2>
-          <p className={styles.modalDescription}>{ModalDescription}</p>
+          <div className={styles.modalHeader}>
+            <p className={styles.modalDate}>{date}</p>
+            <h2 className={styles.modalTitle}>{ModalTitle}</h2>
+          </div>
+
           <div className={styles.modalImageWrap}>
-            <img
-              className={styles.modalImage}
-              src={ModalImage}
-              alt={ModalTitle}
-            />
+            <p
+              className={styles.modalDescription}
+              dangerouslySetInnerHTML={{
+                __html: ModalDescription.replace(/\n/g, "<br />"),
+              }}
+            ></p>
             <img
               className={styles.modalImage}
               src={ModalImage}

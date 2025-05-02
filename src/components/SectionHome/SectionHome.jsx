@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import AnimatedText from "./AnimatedText/AnimatedText";
 import ScrollDownButton from "./ScrollDownButton/ScrollDownButton";
+import { LoadingContext } from "../../App";
 
 const SectionHome = () => {
+  const { isLoading } = useContext(LoadingContext);
+
   // 각 텍스트 블록의 시작 시점 계산
   const calculateDelay = (text, previousDelay, isH1 = false) => {
     const textLength = text.length;

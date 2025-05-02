@@ -42,7 +42,7 @@ const Cursor = () => {
       y.set(cursorPosition.current.y - 20);
 
       // 클릭 시 스케일 조정
-      scale.set(isClicked ? 0.8 : isHovered ? 1.5 : 1);
+      scale.set(isClicked ? 0.8 : 1);
 
       animationFrameId.current = requestAnimationFrame(animate);
     };
@@ -82,12 +82,14 @@ const Cursor = () => {
     <motion.div
       className={`${styles.cursor} ${isHovered ? styles.hovered : ""}`}
       style={{
-        display: isVisible ? "block" : "none",
+        display: isVisible ? "flex" : "none",
         x,
         y,
         scale,
       }}
-    />
+    >
+      <span className={styles.clickText}>Click!!</span>
+    </motion.div>
   );
 };
 

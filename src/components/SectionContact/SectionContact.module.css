@@ -6,48 +6,85 @@
 }
 
 .contactItem {
+  position: relative;
   display: flex;
   align-items: center;
   max-width: 75%;
   padding: 2rem 3rem;
   margin-bottom: 2rem;
-  border: 1px solid #ddd;
+  border: 1px solid #000;
   border-radius: 12px;
-  background-color: #f9f9f9;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.contactItem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 1s ease;
+  z-index: 1;
+  border-radius: 60px;
 }
 
 .contactItem:hover {
-  background-color: #f0f0f0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  color: #fff;
+}
+
+.contactItem:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .contactIcon {
+  position: relative;
   margin-right: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.3s ease;
+  z-index: 2;
+}
+
+.contactItem:hover .contactIcon {
+  color: #fff;
 }
 
 .contactLabel {
+  position: relative;
   display: block;
   font-size: 2rem;
   font-weight: 600;
   color: #666;
+  transition: color 0.3s ease;
+  z-index: 2;
+}
+
+.contactItem:hover .contactLabel {
+  color: #fff;
 }
 
 .contactValue {
+  position: relative;
   display: block;
   font-size: 2.4rem;
   font-weight: 700;
   color: #000;
   text-decoration: none;
   word-break: break-all;
+  transition: color 0.3s ease;
+  z-index: 2;
 }
 
-.contactValue:hover {
-  text-decoration: underline;
-  color: #007bff;
+.contactItem:hover .contactValue {
+  color: #fff;
 }
 
 /* ==========반응형 css========== */
