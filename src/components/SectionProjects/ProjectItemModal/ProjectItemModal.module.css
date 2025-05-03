@@ -4,6 +4,8 @@
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
+  min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
@@ -16,12 +18,14 @@
 .modalContent {
   background-color: #fff;
   max-width: 955px;
+  min-height: 710px;
   width: 90%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   text-align: left;
   z-index: 1001;
   pointer-events: auto;
+  overflow: hidden;
 }
 
 .modalHeader {
@@ -96,6 +100,7 @@
 @media (max-width: 768px) {
   .modalContent {
     width: 100%;
+    min-height: 100vh;
   }
 
   .modalHeader {
