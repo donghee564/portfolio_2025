@@ -9,6 +9,7 @@
   align-items: center;
   z-index: 100;
   transition: all 0.3s ease;
+  pointer-events: auto;
 }
 
 .logo {
@@ -36,7 +37,8 @@
   color: var(--nav-text-color);
   font-size: 2rem;
   padding: 0.5rem;
-  z-index: 1000;
+  z-index: 100;
+  pointer-events: auto;
 }
 
 .navItems {
@@ -97,6 +99,8 @@
     transition: transform 0.45s ease-in-out;
     padding: 2rem;
     width: 50%;
+    z-index: 100;
+    pointer-events: auto;
   }
 
   .navItems.menuOpen {
