@@ -95,7 +95,24 @@
 
 @media (max-width: 768px) {
   .modalContent {
-    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .modalHeader {
+    padding: 3rem 2rem 0 2rem;
+  }
+
+  .modalDescription {
+    padding: 0 2rem;
+  }
+
+  .modalDescription li {
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .modalImageWrap {
+    width: 100%;
   }
 
   .modalTitle {
@@ -108,13 +125,13 @@
   }
 
   .closeButton {
-    top: 4rem;
-    right: 4rem;
-    /* width: 35px;
-    height: 35px; */
+    top: 3rem;
+    right: 2rem;
+    width: 35px;
+    height: 35px;
   }
-  /* 
+
   .closeIcon {
-    font-size: 1.3rem;
-  } */
+    font-size: 2rem;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,8 +19,7 @@ const ProjectItemModal = ({
   ModalImage,
   ModalDescription,
 }) => {
-  // 모달이 닫혀있으면 null 반환
-  if (!isOpen) return null;
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   // 모달이 열릴 때 포커스를 모달로 이동
   useEffect(() => {
@@ -43,6 +42,8 @@ const ProjectItemModal = ({
       onClose();
     }
   };
+
+  if (!isOpen) return null;
 
   return ReactDOM.createPortal(
     <div
@@ -80,16 +81,31 @@ const ProjectItemModal = ({
           </div>
 
           <div className={styles.modalImageWrap}>
-            <ul className={styles.modalDescription}>
+            <motion.ul
+              className={styles.modalDescription}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: isImageLoaded ? 1 : 0,
+                y: isImageLoaded ? 0 : 20,
+              }}
+              transition={{ duration: 0.3, delay: isImageLoaded ? 0.2 : 0 }}
+            >
               {ModalDescription.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
-            </ul>
-            <img
-              className={styles.modalImage}
-              src={ModalImage}
-              alt={ModalTitle + " 스크린샷 이미지"}
-            />
+            </motion.ul>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isImageLoaded ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img
+                className={styles.modalImage}
+                src={ModalImage}
+                alt={ModalTitle + " 스크린샷 이미지"}
+                onLoad={() => setIsImageLoaded(true)}
+              />
+            </motion.div>
           </div>
         </motion.div>
       </div>
