@@ -4,4 +4,5 @@
   min-height: 100dvh;
   height: auto;
   z-index: 1;
+  word-break: keep-all;
 }

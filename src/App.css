@@ -301,6 +301,7 @@ svg {
   font-size: 2.2rem;
   line-height: 3rem;
   letter-spacing: -0.05rem;
+  word-break: keep-all;
 }
 .section-title.type-text-border {
   font-size: 14rem;

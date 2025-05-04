@@ -35,3 +35,9 @@
 .cursor.hovered .clickText {
   display: block;
 }
+
+@media screen and (max-width: 768px) {
+  .cursor {
+    display: none;
+  }
+}
