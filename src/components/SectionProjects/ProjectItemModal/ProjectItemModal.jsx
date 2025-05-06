@@ -43,6 +43,14 @@ const ProjectItemModal = ({
     }
   };
 
+  // 이미지 로딩 핸들러
+  const handleImageLoad = () => {
+    // 테스트를 위해 2초 지연 추가
+    setTimeout(() => {
+      setIsImageLoaded(true);
+    }, 0);
+  };
+
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
@@ -84,26 +92,34 @@ const ProjectItemModal = ({
             <motion.ul
               className={styles.modalDescription}
               initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: isImageLoaded ? 1 : 0,
-                y: isImageLoaded ? 0 : 20,
-              }}
-              transition={{ duration: 0.3, delay: isImageLoaded ? 0.2 : 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
             >
               {ModalDescription.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </motion.ul>
             <motion.div
+              className={styles.modalImageContainer}
               initial={{ opacity: 0 }}
-              animate={{ opacity: isImageLoaded ? 1 : 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             >
+              {!isImageLoaded && (
+                <div className={styles.imageLoading}>
+                  <div className={styles.imageLoadingText}>
+                    <div className={styles.loadingSpinner}></div>
+                    <span>이미지 로딩중</span>
+                  </div>
+                </div>
+              )}
               <img
-                className={styles.modalImage}
+                className={`${styles.modalImage} ${
+                  !isImageLoaded ? styles.hidden : ""
+                }`}
                 src={ModalImage}
                 alt={ModalTitle + " 스크린샷 이미지"}
-                onLoad={() => setIsImageLoaded(true)}
+                onLoad={handleImageLoad}
               />
             </motion.div>
           </div>
