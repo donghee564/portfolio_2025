@@ -1,12 +1,64 @@
-# React + Vite
+# 포트폴리오 2025
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 주요 기능
 
-Currently, two official plugins are available:
+### 1. 커스텀 커서 (Cursor.jsx)
+- Framer Motion을 활용한 부드러운 커서 애니메이션
+- 링크 호버 시 커서 스타일 변경
+- 모바일 기기에서는 자동 비활성화
+- 클릭 시 스케일 애니메이션 효과
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 2. 네비게이션 (Nav.jsx)
+- 스크롤 위치에 따른 배경색 자동 변경
+- 현재 섹션 하이라이트 표시
+- 반응형 메뉴 (모바일 대응)
+- 부드러운 스크롤 이동
 
-## Expanding the ESLint configuration
+### 3. 스킬 섹션 (SectionSkills.jsx)
+- 스크롤 기반 패럴랙스 애니메이션
+- 스킬 아이콘 호버 효과
+- 반응형 디자인
+- 스크롤 진행도에 따른 요소 이동
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 4. 프로젝트 섹션 (SectionProjects.jsx)
+- 프로젝트 목록 그리드 레이아웃
+- 프로젝트 상세 모달 (ProjectItemModal.jsx)
+- Framer Motion을 활용한 스크롤 애니메이션
+- 반응형 디자인 (모바일/태블릿/데스크톱)
+
+### 5. 로딩 화면 (Loading.jsx)
+- 초기 로딩 진행률 표시
+- Framer Motion을 활용한 애니메이션
+- 로딩 완료 시 자연스러운 전환 효과
+
+### 6. 홈 섹션 (SectionHome.jsx)
+- 텍스트 타이핑 애니메이션 (AnimatedText.jsx)
+- 스크롤 다운 버튼 애니메이션 (ScrollDownButton.jsx)
+- 반응형 레이아웃
+
+### 7. 경력 섹션 (SectionExp.jsx)
+- 스크롤 기반 애니메이션
+- 경력 타임라인 표시
+- 반응형 디자인
+
+### 8. 연락처 섹션 (SectionContact.jsx)
+- 소셜 미디어 링크
+- 연락처 정보 표시
+- 반응형 디자인
+
+## 기술 스택
+- React
+- Framer Motion (애니메이션)
+- CSS Modules
+- Font Awesome (아이콘)
+
+## 접근성
+- ARIA 레이블 적용
+- 키보드 네비게이션 지원
+- 스크린 리더 호환성
+- 반응형 디자인
+
+## 성능 최적화
+- 이미지 최적화
+- 컴포넌트 지연 로딩
+- 애니메이션 최적화
