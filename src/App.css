@@ -388,4 +388,10 @@ svg {
     line-height: 6rem;
   }
 }
+@media screen and (max-width: 480px) {
+  .section-text {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+  }
+}
 /* //==========반응형 css========== */
