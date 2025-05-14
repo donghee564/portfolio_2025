@@ -11,7 +11,7 @@ import Cursor from "./components/Cursor/Cursor";
 import Loading from "./components/Loading/Loading";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
-
+import BackgroundElements from "./components/SectionHome/BackgroundElements/BackgroundElements";
 // 로딩 상태를 전역적으로 관리하기 위한 Context 생성
 export const LoadingContext = React.createContext();
 
@@ -86,6 +86,7 @@ function App() {
           transition={{ duration: 0.5 }}
         >
           <div className="contents-wrap">
+            {/* <BackgroundElements /> */}
             <SectionHome id="home" />
             <SectionExp id="exp" />
             <SectionSkills ref={skillsRef} id="skills" />

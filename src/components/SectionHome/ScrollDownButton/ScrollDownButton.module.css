@@ -1,6 +1,6 @@
 .mouseContainer {
   position: absolute;
-  bottom: 7%;
+  bottom: 5%;
   left: 0;
   width: 100%;
   display: flex;
@@ -38,9 +38,23 @@
 }
 
 /* ==== 반응형 css ==== */
+@media (max-width: 1024px) {
+  .mouseContainer {
+    bottom: 3%;
+  }
+  .mouseOutline {
+    width: 25px;
+    height: 40px;
+  }
+  .mouseDot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
 @media (max-width: 768px) {
   .mouseContainer {
-    bottom: 5%;
+    bottom: 3%;
   }
   .mouseOutline {
     width: 20px;

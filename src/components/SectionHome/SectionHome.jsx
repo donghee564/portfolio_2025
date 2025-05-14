@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AnimatedText from "./AnimatedText/AnimatedText";
 import ScrollDownButton from "./ScrollDownButton/ScrollDownButton";
+
 import { LoadingContext } from "../../App";
 
 const SectionHome = () => {
