@@ -86,7 +86,7 @@ function App() {
           transition={{ duration: 0.5 }}
         >
           <div className="contents-wrap">
-            {/* <BackgroundElements /> */}
+            <BackgroundElements />
             <SectionHome id="home" />
             <SectionExp id="exp" />
             <SectionSkills ref={skillsRef} id="skills" />
