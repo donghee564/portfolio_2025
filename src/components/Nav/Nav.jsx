@@ -138,6 +138,21 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
           ABOUT ME
         </a>
         <a
+          href="#projects"
+          className={`${styles.navItem} ${
+            activeSection === "projects" ? styles.active : ""
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("projects");
+          }}
+          role="menuitem"
+          aria-current={activeSection === "projects" ? "page" : undefined}
+          aria-label="프로젝트 섹션으로 이동"
+        >
+          RECENT
+        </a>
+        <a
           href="#exp"
           className={`${styles.navItem} ${
             activeSection === "exp" ? styles.active : ""
@@ -166,21 +181,6 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
           aria-label="스킬 섹션으로 이동"
         >
           SKILLS
-        </a>
-        <a
-          href="#projects"
-          className={`${styles.navItem} ${
-            activeSection === "projects" ? styles.active : ""
-          }`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("projects");
-          }}
-          role="menuitem"
-          aria-current={activeSection === "projects" ? "page" : undefined}
-          aria-label="프로젝트 섹션으로 이동"
-        >
-          RECENT
         </a>
         <a
           href="#contact"

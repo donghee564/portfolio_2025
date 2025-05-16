@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
-import { LoadingContext } from "../../../App";
+import { LoadingContext } from "../../../contexts/LoadingContext";
 
 const AnimatedText = ({ text, blockDelay, isH1 = false }) => {
   const { isLoading } = useContext(LoadingContext);
@@ -12,26 +12,30 @@ const AnimatedText = ({ text, blockDelay, isH1 = false }) => {
       y: isLoading ? "100%" : "0%",
       opacity: isLoading ? 0 : 1,
       transition: {
-        delay: isLoading ? 0 : blockDelay + i * (isH1 ? 0.06 : 0.015),
-        duration: 0.3,
-        ease: "easeOut",
+        delay: isLoading ? 0 : blockDelay + i * (isH1 ? 0.15 : 0.08),
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
       },
     }),
   });
 
-  // 텍스트 분할 함수
+  // 텍스트를 단어 단위로 분할하는 함수
   const splitText = (text, blockDelay, isH1) => {
     const textAnimation = createTextAnimation(blockDelay, isH1);
-    return text.split("").map((char, i) => (
+    return text.split(" ").map((word, i) => (
       <motion.span
         key={i}
         custom={i}
         initial={textAnimation.initial}
         animate={textAnimation.animate}
-        style={{ display: "inline-block" }}
+        style={{
+          display: "inline-block",
+          marginRight: "0.25em",
+          transformOrigin: "bottom",
+        }}
         aria-hidden="true"
       >
-        {char === " " ? "\u00A0" : char}
+        {word}
       </motion.span>
     ));
   };

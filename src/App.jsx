@@ -12,10 +12,9 @@ import Loading from "./components/Loading/Loading";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 import BackgroundElements from "./components/SectionHome/BackgroundElements/BackgroundElements";
-// 로딩 상태를 전역적으로 관리하기 위한 Context 생성
-export const LoadingContext = React.createContext();
+import { LoadingContext } from "./contexts/LoadingContext";
 
-function App() {
+const App = () => {
   // 스크롤 추적을 위한 ref 생성
   const containerRef = useRef(null);
   const skillsRef = useRef(null);
@@ -88,9 +87,9 @@ function App() {
           <div className="contents-wrap">
             <BackgroundElements />
             <SectionHome id="home" />
+            <SectionProjects id="projects" />
             <SectionExp id="exp" />
             <SectionSkills ref={skillsRef} id="skills" />
-            <SectionProjects id="projects" />
             <SectionContact id="contact" />
           </div>
         </motion.div>
@@ -98,6 +97,6 @@ function App() {
       </main>
     </LoadingContext.Provider>
   );
-}
+};
 
 export default App;

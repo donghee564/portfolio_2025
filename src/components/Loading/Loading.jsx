@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./Loading.module.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { LoadingContext } from "../../App";
+import { LoadingContext } from "../../contexts/LoadingContext";
 
 const Loading = ({ progress }) => {
   const { setIsLoading } = React.useContext(LoadingContext);

@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
 import AnimatedText from "./AnimatedText/AnimatedText";
 import ScrollDownButton from "./ScrollDownButton/ScrollDownButton";
-
-import { LoadingContext } from "../../App";
+import { LoadingContext } from "../../contexts/LoadingContext";
 
 const SectionHome = () => {
   const { isLoading } = useContext(LoadingContext);
 
   // 각 텍스트 블록의 시작 시점 계산
   const calculateDelay = (text, previousDelay, isH1 = false) => {
-    const textLength = text.length;
-    const animationDuration = textLength * (isH1 ? 0.06 : 0.015); // 각 글자의 딜레이 (h1: 0.06초, 그 외: 0.015초)
+    const wordCount = text.split(" ").length;
+    const animationDuration = wordCount * (isH1 ? 0.15 : 0.08); // 각 단어의 딜레이 (h1: 0.15초, 그 외: 0.08초)
     return previousDelay + animationDuration;
   };
 
@@ -62,7 +61,7 @@ const SectionHome = () => {
           </p>
         </div>
       </div>
-      <ScrollDownButton delay={delay4 + text4.length * 0.015} />
+      <ScrollDownButton delay={delay4 + text4.split(" ").length * 0.08} />
     </section>
   );
 };
