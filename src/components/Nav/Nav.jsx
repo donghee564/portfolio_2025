@@ -8,6 +8,7 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isInHomeSection, setIsInHomeSection] = useState(true);
 
   // 스크롤 진행도에 따른 배경색 변경
   const navBackground = useTransform(
@@ -38,6 +39,11 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
     const handleScroll = () => {
       const sections = ["home", "exp", "skills", "projects", "contact"];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const homeSection = document.getElementById("home");
+      const homeSectionHeight = homeSection?.offsetHeight || 0;
+
+      // SectionHome 내부 여부 체크
+      setIsInHomeSection(window.scrollY < homeSectionHeight);
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -96,7 +102,11 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
       className={styles.nav}
       role="navigation"
       aria-label="메인 네비게이션"
-      style={{ backgroundColor: navBackground }}
+      style={{
+        backgroundColor: isInHomeSection
+          ? "rgba(255, 255, 255, 0)"
+          : navBackground,
+      }}
     >
       <div
         style={{ backgroundColor: textColor }}

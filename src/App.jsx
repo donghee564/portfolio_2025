@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 import BackgroundElements from "./components/SectionHome/BackgroundElements/BackgroundElements";
 import { LoadingContext } from "./contexts/LoadingContext";
+import WaveBackground from "./components/SectionHome/WaveBackground/WaveBackground";
 
 const App = () => {
   // 스크롤 추적을 위한 ref 생성
@@ -86,6 +87,7 @@ const App = () => {
         >
           <div className="contents-wrap">
             <BackgroundElements />
+            <WaveBackground />
             <SectionHome id="home" />
             <SectionProjects id="projects" />
             <SectionExp id="exp" />

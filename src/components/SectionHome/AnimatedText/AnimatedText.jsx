@@ -1,9 +1,17 @@
 import React, { useContext } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { LoadingContext } from "../../../contexts/LoadingContext";
 
 const AnimatedText = ({ text, blockDelay, isH1 = false }) => {
   const { isLoading } = useContext(LoadingContext);
+  const { scrollYProgress } = useScroll();
+
+  // 스크롤에 따른 투명도 변환
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.03], // 스크롤 0% ~ 10% 구간
+    [1, 0] // 투명도 100% ~ 0%
+  );
 
   // 텍스트 분할 애니메이션
   const createTextAnimation = (blockDelay, isH1) => ({
@@ -32,6 +40,10 @@ const AnimatedText = ({ text, blockDelay, isH1 = false }) => {
           display: "inline-block",
           marginRight: "0.25em",
           transformOrigin: "bottom",
+          opacity,
+          transition: {
+            opacity: { duration: 0.2, ease: "easeOut" },
+          },
         }}
         aria-hidden="true"
       >

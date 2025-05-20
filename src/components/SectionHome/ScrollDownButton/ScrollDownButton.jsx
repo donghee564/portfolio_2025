@@ -1,13 +1,23 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./ScrollDownButton.module.css";
 
 const ScrollDownButton = ({ delay = 0 }) => {
+  const { scrollYProgress } = useScroll();
+
+  // 스크롤에 따른 투명도 변환
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.01], // 스크롤 0% ~ 1% 구간
+    [1, 0] // 투명도 100% ~ 0%
+  );
+
   return (
     <motion.div
       className={styles.mouseContainer}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
+      style={{ opacity }}
       transition={{
         duration: 0.5,
         ease: "easeOut",

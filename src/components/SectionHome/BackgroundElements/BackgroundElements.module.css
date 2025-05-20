@@ -9,13 +9,64 @@
   pointer-events: none;
 }
 
-.waveCanvas {
+.gradientBackground {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  filter: blur(0.5px);
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+      circle at calc(50% + var(--mouse-x, 0)) calc(50% + var(--mouse-y, 0)),
+      rgba(255, 140, 0, 0.4),
+      /* 따뜻한 주황색 */ transparent 40%
+    ),
+    radial-gradient(
+      circle at calc(50% + var(--mouse-x, 0) * -1)
+        calc(50% + var(--mouse-y, 0) * -1),
+      rgba(255, 69, 0, 0.4),
+      /* 붉은 주황색 */ transparent 40%
+    ),
+    radial-gradient(
+      circle at calc(50% + var(--mouse-x, 0) * 0.5)
+        calc(50% + var(--mouse-y, 0) * 0.5),
+      rgba(255, 215, 0, 0.3),
+      /* 황금색 */ transparent 40%
+    );
+  filter: blur(80px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  animation: wave 8s ease-in-out infinite, float 12s ease-in-out infinite;
   mix-blend-mode: screen;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(1.5) translate(0, 0);
+  }
+  25% {
+    transform: scale(1.6) translate(1%, 1%);
+  }
+  50% {
+    transform: scale(1.5) translate(0, 0);
+  }
+  75% {
+    transform: scale(1.6) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1.5) translate(0, 0);
+  }
+}
+
+@keyframes float {
+  0% {
+    background-position: 0% 0%;
+  }
+  33% {
+    background-position: 100% 33%;
+  }
+  66% {
+    background-position: 50% 66%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
