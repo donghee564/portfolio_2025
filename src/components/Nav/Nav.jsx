@@ -108,17 +108,15 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
           : navBackground,
       }}
     >
-      <div
+      <button
         style={{ backgroundColor: textColor }}
         className={styles.logo}
-        aria-label="DONGHEE 포트폴리오"
+        aria-label="DONGHEE 포트폴리오 홈으로 이동"
         onClick={handleLogoClick}
-        role="button"
-        tabIndex="0"
         onKeyDown={handleLogoKeyDown}
       >
         <span className={styles.logoText}>D.</span>
-      </div>
+      </button>
       <button
         className={styles.menuButton}
         onClick={toggleMenu}
@@ -127,7 +125,7 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
       >
         <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} size="lg" />
       </button>
-      <div
+      <ul
         className={`${styles.navItems} ${isMenuOpen ? styles.menuOpen : ""}`}
         role="menubar"
         aria-label="메인 메뉴"
@@ -207,7 +205,7 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
         >
           CONTACT
         </a>
-      </div>
+      </ul>
     </motion.nav>
   );
 };
