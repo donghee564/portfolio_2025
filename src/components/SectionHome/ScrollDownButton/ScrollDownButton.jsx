@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Lottie from "lottie-react";
 import styles from "./ScrollDownButton.module.css";
 
 const ScrollDownButton = ({ delay = 0 }) => {
+  const [diverAnimation, setDiverAnimation] = useState(null);
   const { scrollYProgress } = useScroll();
 
   // 스크롤에 따른 투명도 변환
@@ -12,6 +14,14 @@ const ScrollDownButton = ({ delay = 0 }) => {
     [1, 0] // 투명도 100% ~ 0%
   );
 
+  // JSON 파일 로드
+  useEffect(() => {
+    fetch("/diver_animation.json")
+      .then((response) => response.json())
+      .then((data) => setDiverAnimation(data))
+      .catch((error) => console.error("Error loading animation:", error));
+  }, []);
+
   return (
     <motion.div
       className={styles.mouseContainer}
@@ -19,27 +29,33 @@ const ScrollDownButton = ({ delay = 0 }) => {
       animate={{ opacity: 1, y: 0 }}
       style={{ opacity }}
       transition={{
-        duration: 0.5,
+        duration: 0.8,
         ease: "easeOut",
         delay: delay,
       }}
     >
-      <div className={styles.mouseOutline}>
-        <motion.div
-          className={styles.mouseDot}
-          animate={{
-            y: [0, 10, 0],
-            opacity: [1, 0.2, 1],
-            x: "-50%",
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-      <span className={styles.scrollText}>Scroll Down</span>
+      <motion.div
+        className={styles.lottieContainer}
+        animate={{
+          y: [0, 0, 25, 25, 0],
+          rotate: [0, -90, -90, -90, 0],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        {diverAnimation && (
+          <Lottie
+            animationData={diverAnimation}
+            loop={true}
+            autoplay={true}
+            style={{ width: 80, height: 80 }}
+          />
+        )}
+      </motion.div>
+      <span className={styles.scrollText}>Scroll to dive in ~</span>
     </motion.div>
   );
 };

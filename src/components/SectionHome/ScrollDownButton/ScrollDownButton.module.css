@@ -11,30 +11,19 @@
   color: #111;
 }
 
-.mouseOutline {
-  width: 30px;
-  height: 50px;
-  border: 2px solid #111;
-  border-radius: 20px;
-  position: relative;
-}
-
-.mouseDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #111;
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+.lottieContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .scrollText {
   font-size: 12px;
-  margin-top: 10px;
+  margin-top: 20px;
   letter-spacing: 1px;
   color: #111;
+  font-weight: 500;
 }
 
 /* ==== 반응형 css ==== */
@@ -42,13 +31,11 @@
   .mouseContainer {
     bottom: 3%;
   }
-  .mouseOutline {
-    width: 25px;
-    height: 40px;
+  .lottieContainer {
+    transform: scale(0.9);
   }
-  .mouseDot {
-    width: 5px;
-    height: 5px;
+  .scrollText {
+    font-size: 11px;
   }
 }
 
@@ -56,13 +43,11 @@
   .mouseContainer {
     bottom: 3%;
   }
-  .mouseOutline {
-    width: 20px;
-    height: 30px;
+  .lottieContainer {
+    transform: scale(0.8);
   }
-  .mouseDot {
-    width: 4px;
-    height: 4px;
+  .scrollText {
+    font-size: 10px;
   }
 }
 /* ==== //반응형 css ==== */

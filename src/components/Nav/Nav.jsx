@@ -3,6 +3,7 @@ import { motion, useTransform, useMotionValueEvent } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Nav.module.css";
+import NavModal from "./NavModal";
 
 const Nav = ({ backgroundColor, scrollYProgress }) => {
   const [activeSection, setActiveSection] = useState("home");
@@ -30,9 +31,9 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
   );
 
   // CSS 변수 업데이트
-  useMotionValueEvent(textColor, "change", (latest) => {
-    document.documentElement.style.setProperty("--nav-text-color", latest);
-  });
+  // useMotionValueEvent(textColor, "change", (latest) => {
+  //   document.documentElement.style.setProperty("--nav-text-color", latest);
+  // });
 
   // 스크롤 위치에 따른 섹션 활성화
   useEffect(() => {
@@ -44,6 +45,9 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
 
       // SectionHome 내부 여부 체크
       setIsInHomeSection(window.scrollY < homeSectionHeight);
+
+      // scrollTop이 1 이상일 때 active 클래스 추가
+      setIsScrolled(window.scrollY > 1);
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -60,7 +64,6 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
           }
         }
       }
-      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -72,7 +75,7 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false); // 메뉴 클릭 후 메뉴 닫기
+      setIsMenuOpen(false); // 메뉴 클릭 후 모달 닫기
     }
   };
 
@@ -98,115 +101,127 @@ const Nav = ({ backgroundColor, scrollYProgress }) => {
   };
 
   return (
-    <motion.nav
-      className={styles.nav}
-      role="navigation"
-      aria-label="메인 네비게이션"
-      style={{
-        backgroundColor: isInHomeSection
-          ? "rgba(255, 255, 255, 0)"
-          : navBackground,
-      }}
-    >
-      <button
-        style={{ backgroundColor: textColor }}
-        className={styles.logo}
-        aria-label="DONGHEE 포트폴리오 홈으로 이동"
-        onClick={handleLogoClick}
-        onKeyDown={handleLogoKeyDown}
+    <>
+      <motion.nav
+        className={styles.nav}
+        role="navigation"
+        aria-label="메인 네비게이션"
+        style={{
+          backgroundColor: isInHomeSection
+            ? "rgba(255, 255, 255, 0)"
+            : navBackground,
+        }}
       >
-        <span className={styles.logoText}>D.</span>
-      </button>
-      <button
-        className={styles.menuButton}
-        onClick={toggleMenu}
-        aria-label="메뉴"
-        aria-expanded={isMenuOpen}
-      >
-        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} size="lg" />
-      </button>
-      <ul
-        className={`${styles.navItems} ${isMenuOpen ? styles.menuOpen : ""}`}
-        role="menubar"
-        aria-label="메인 메뉴"
-      >
-        <a
-          href="#home"
-          className={`${styles.navItem} ${
-            activeSection === "home" ? styles.active : ""
+        <div
+          className={`${styles.navContainer} ${
+            isScrolled ? styles.active : ""
           }`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("home");
-          }}
-          role="menuitem"
-          aria-current={activeSection === "home" ? "page" : undefined}
-          aria-label="홈 섹션으로 이동"
         >
-          ABOUT ME
-        </a>
-        <a
-          href="#projects"
-          className={`${styles.navItem} ${
-            activeSection === "projects" ? styles.active : ""
-          }`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("projects");
-          }}
-          role="menuitem"
-          aria-current={activeSection === "projects" ? "page" : undefined}
-          aria-label="프로젝트 섹션으로 이동"
-        >
-          RECENT
-        </a>
-        <a
-          href="#exp"
-          className={`${styles.navItem} ${
-            activeSection === "exp" ? styles.active : ""
-          }`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("exp");
-          }}
-          role="menuitem"
-          aria-current={activeSection === "exp" ? "page" : undefined}
-          aria-label="경력 섹션으로 이동"
-        >
-          EXP
-        </a>
-        <a
-          href="#skills"
-          className={`${styles.navItem} ${
-            activeSection === "skills" ? styles.active : ""
-          }`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("skills");
-          }}
-          role="menuitem"
-          aria-current={activeSection === "skills" ? "page" : undefined}
-          aria-label="스킬 섹션으로 이동"
-        >
-          SKILLS
-        </a>
-        <a
-          href="#contact"
-          className={`${styles.navItem} ${
-            activeSection === "contact" ? styles.active : ""
-          }`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("contact");
-          }}
-          role="menuitem"
-          aria-current={activeSection === "contact" ? "page" : undefined}
-          aria-label="연락처 섹션으로 이동"
-        >
-          CONTACT
-        </a>
-      </ul>
-    </motion.nav>
+          <button
+            style={{ backgroundColor: textColor }}
+            className={`${styles.logo} ${isScrolled ? styles.active : ""}`}
+            aria-label="DONGHEE 포트폴리오 홈으로 이동"
+            onClick={handleLogoClick}
+            onKeyDown={handleLogoKeyDown}
+          >
+            <span className={styles.logoText}>D.</span>
+          </button>
+          <button
+            className={styles.menuButton}
+            onClick={toggleMenu}
+            aria-label="메뉴"
+            aria-expanded={isMenuOpen}
+          >
+            <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} size="lg" />
+          </button>
+          <ul className={styles.navItems} role="menubar" aria-label="메인 메뉴">
+            <a
+              href="#home"
+              className={`${styles.navItem} ${
+                activeSection === "home" ? styles.active : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("home");
+              }}
+              role="menuitem"
+              aria-current={activeSection === "home" ? "page" : undefined}
+              aria-label="홈 섹션으로 이동"
+            >
+              ABOUT ME
+            </a>
+            <a
+              href="#projects"
+              className={`${styles.navItem} ${
+                activeSection === "projects" ? styles.active : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("projects");
+              }}
+              role="menuitem"
+              aria-current={activeSection === "projects" ? "page" : undefined}
+              aria-label="프로젝트 섹션으로 이동"
+            >
+              RECENT
+            </a>
+            <a
+              href="#exp"
+              className={`${styles.navItem} ${
+                activeSection === "exp" ? styles.active : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("exp");
+              }}
+              role="menuitem"
+              aria-current={activeSection === "exp" ? "page" : undefined}
+              aria-label="경력 섹션으로 이동"
+            >
+              EXP
+            </a>
+            <a
+              href="#skills"
+              className={`${styles.navItem} ${
+                activeSection === "skills" ? styles.active : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("skills");
+              }}
+              role="menuitem"
+              aria-current={activeSection === "skills" ? "page" : undefined}
+              aria-label="스킬 섹션으로 이동"
+            >
+              SKILLS
+            </a>
+            <a
+              href="#contact"
+              className={`${styles.navItem} ${
+                activeSection === "contact" ? styles.active : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("contact");
+              }}
+              role="menuitem"
+              aria-current={activeSection === "contact" ? "page" : undefined}
+              aria-label="연락처 섹션으로 이동"
+            >
+              CONTACT
+            </a>
+          </ul>
+        </div>
+      </motion.nav>
+
+      {/* NavModal 컴포넌트 */}
+      <NavModal
+        isOpen={isMenuOpen}
+        onClose={toggleMenu}
+        activeSection={activeSection}
+        scrollToSection={scrollToSection}
+      />
+    </>
   );
 };
 
